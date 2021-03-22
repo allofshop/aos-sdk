@@ -1,5 +1,6 @@
-import { StringValidator } from '~/base/validator';
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
+
+import { StringValidator } from '~/base/validator';
 
 import {
   CreateDto,

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "packages/aos-sdk-nodejs"
+		},
+		{
+			"path": "packages/aos-sdk-nodejs-lite"
+		},
+		{
+			"path": "packages/aos-sdk-js-lite"
+		}
+	],
+	"settings": {}
+}

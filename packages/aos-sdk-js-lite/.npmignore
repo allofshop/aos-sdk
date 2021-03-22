@@ -1,0 +1,10 @@
+/src
+.prettierignore
+.prettierrc
+tsconfig.json
+tsconfig.prod.json
+.eslintrc.js
+/node_modules
+webpack.config.js
+__tests__
+.dist
