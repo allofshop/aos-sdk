@@ -1,6 +1,6 @@
 {
   "name": "@allofshop/aos-sdk-nodejs-lite",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "AOS SDK for NodeJS",
   "main": ".dist/index.js",
   "scripts": {
@@ -18,7 +18,12 @@
   },
   "homepage": "https://github.com/allofshop/aos-sdk",
   "license": "ISC",
-  "keywords": ["aos", "allofshop", "commerce", "aos-sdk-nodejs-lite"],
+  "keywords": [
+    "aos",
+    "allofshop",
+    "commerce",
+    "aos-sdk-nodejs-lite"
+  ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
