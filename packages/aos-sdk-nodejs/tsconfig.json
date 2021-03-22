@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "module": "CommonJS",
+    "emitBOM": true,
+    "target": "ES2019",
+    "rootDir": ".",
+    "outDir": "./.dist/",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "sourceMap": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "typeRoots": ["./typings", "./node_modules/@types"],
+    "listFiles": false,
+    "lib": ["ES2020"],
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "removeComments": true,
+    "skipLibCheck": true
+  },
+  "compileOnSave": true,
+  "buildOnSave": false,
+  "include": ["src/**/*.ts"],
+  "exclude": [".git", "node_modules"]
+}

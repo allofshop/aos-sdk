@@ -1,6 +1,6 @@
 # @allofshop/aos-sdk-nodejs-lite
 
-> aos sdk for nodejs.
+> aos sdk for nodejs(lite version)
 
 ## Install
 

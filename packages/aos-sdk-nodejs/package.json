@@ -1,0 +1,69 @@
+{
+  "name": "@allofshop/aos-sdk-nodejs",
+  "version": "0.0.0",
+  "description": "AOS SDK for NodeJS",
+  "main": ".dist/index.js",
+  "types": ".dist/src/index.d.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/jest",
+    "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js"
+  },
+  "author": {
+    "name": "All Of Shop",
+    "email": "allofshop@corretto.io",
+    "url": "https://allof.shop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allofshop/aos-sdk.git",
+    "directory": "packages/aos-sdk-nodejs"
+  },
+  "homepage": "https://github.com/allofshop/aos-sdk",
+  "license": "ISC",
+  "keywords": [
+    "aos",
+    "allofshop",
+    "commerce",
+    "shop",
+    "aos-sdk-nodejs"
+  ],
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "terser-webpack-plugin": "^5.1.1",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.14",
+    "ts-node": "^9.1.0",
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.2.3",
+    "webpack": "^5.13.0",
+    "webpack-cli": "^4.3.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "@allofshop/aos-sdk-nodejs-lite": "^1.0.0-alpha.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testMatch": [
+      "**/?(*.)+(spec|test).ts?(x)"
+    ],
+    "testTimeout": 30000,
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "~/(.*)$": "<rootDir>/src/$1"
+    }
+  }
+}
