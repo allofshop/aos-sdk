@@ -4,6 +4,9 @@
   "description": "AOS SDK for NodeJS",
   "main": ".dist/index.js",
   "types": ".dist/src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js"
@@ -65,5 +68,6 @@
     "moduleNameMapper": {
       "~/(.*)$": "<rootDir>/src/$1"
     }
-  }
+  },
+  "gitHead": "b3cdc7e275ff91eaa53be5a062563ea4498e3347"
 }
