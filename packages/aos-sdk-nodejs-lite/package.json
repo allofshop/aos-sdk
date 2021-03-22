@@ -5,7 +5,7 @@
   "main": ".dist/index.js",
   "scripts": {
     "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build && npm publish --access public"
   },
   "author": {
     "name": "All Of Shop",
@@ -36,5 +36,6 @@
   },
   "dependencies": {
     "axios": "^0.21.1"
-  }
+  },
+  "gitHead": "58d60f2f5547cc7ac74cd2c80be01c0b4ec6e830"
 }
