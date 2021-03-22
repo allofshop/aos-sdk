@@ -1,0 +1,7 @@
+/src
+.prettierignore
+.prettierrc
+tsconfig.json
+tsconfig.prod.json
+.eslintrc.js
+/node_modules

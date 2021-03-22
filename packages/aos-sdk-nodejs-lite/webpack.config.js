@@ -15,9 +15,9 @@ module.exports = {
     __filename: true,
     __dirname: true,
   },
-  entry: './src/server.ts',
+  entry: './src/index.ts',
   output: {
-    filename: '[name].js',
+    filename: 'index.js',
     path: path.resolve(__dirname, '.dist'),
   },
   module: {

@@ -26,6 +26,6 @@
   },
   "compileOnSave": true,
   "buildOnSave": false,
-  "include": ["src/**/*.ts"],
-  "exclude": [".git", "node_modules"]
+  "include": ["src/*.ts"],
+  "exclude": ["node_modules"]
 }
