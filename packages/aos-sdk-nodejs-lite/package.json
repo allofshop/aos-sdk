@@ -4,8 +4,7 @@
   "description": "AOS SDK for NodeJS",
   "main": ".dist/index.js",
   "scripts": {
-    "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js",
-    "publish": "npm run build && npm publish --access public"
+    "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js"
   },
   "author": {
     "name": "All Of Shop",
@@ -37,5 +36,5 @@
   "dependencies": {
     "axios": "^0.21.1"
   },
-  "gitHead": "58d60f2f5547cc7ac74cd2c80be01c0b4ec6e830"
+  "gitHead": "649bc8b56cbdfaae6be18f18946666f7bf3c5278"
 }
