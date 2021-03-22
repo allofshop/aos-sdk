@@ -7,3 +7,4 @@ tsconfig.prod.json
 /node_modules
 webpack.config.js
 __tests__
+.dist
