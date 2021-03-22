@@ -11,7 +11,14 @@
     "email": "allofshop@corretto.io",
     "url": "https://allof.shop"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allofshop/aos-sdk.git",
+    "directory": "packages/aos-sdk-nodejs-lite"
+  },
+  "homepage": "https://github.com/allofshop/aos-sdk",
   "license": "ISC",
+  "keywords": ["aos", "allofshop", "commerce", "aos-sdk-nodejs-lite"],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
@@ -36,5 +43,5 @@
   "dependencies": {
     "axios": "^0.21.1"
   },
-  "gitHead": "649bc8b56cbdfaae6be18f18946666f7bf3c5278"
+  "gitHead": "649bc8b56cbdfaae6be18f18946666f7bf3c5278",
 }
