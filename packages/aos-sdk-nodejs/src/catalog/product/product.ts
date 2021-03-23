@@ -12,6 +12,7 @@ export async function getProduct(productId: string) {
   stringValidator.validate(productId, 'productId');
 
   if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /products/${productId}`);
     return genProductDetail();
   }
 
@@ -23,6 +24,7 @@ export async function getProducts(query: FindDto) {
   findValidator.validate(query, 'query');
 
   if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /products`);
     return genProductList();
   }
 
