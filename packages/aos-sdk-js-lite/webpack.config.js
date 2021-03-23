@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * @copyright Copyright © 2018-2019 Corretto, Inc. All rights reserved.
  */
@@ -22,6 +21,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,

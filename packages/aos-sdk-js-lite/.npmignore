@@ -8,3 +8,5 @@ tsconfig.prod.json
 webpack.config.js
 __tests__
 .dist
+dist
+.cache

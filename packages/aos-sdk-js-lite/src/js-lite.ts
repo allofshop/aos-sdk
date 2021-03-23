@@ -1,10 +1,11 @@
-import axios from 'axios';
+import { AxiosInstance } from 'axios';
 
 interface InitializeOptions {
   version: number;
   apiKey: string;
   secret: string;
   shopId: string;
+  axios: AxiosInstance,
 }
 
 interface Headers {
@@ -66,7 +67,7 @@ export async function request(
 
   const headers: Headers = { 'x-aos-signature': globalOption.shopId };
 
-  const response = await axios({
+  const response = await globalOption.axios({
     method,
     url: realPath,
     headers,
