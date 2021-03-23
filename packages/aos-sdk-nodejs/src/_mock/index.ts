@@ -366,3 +366,38 @@ async function genCartItem() {
 function getRandomNumber(power: number) {
   return (Math.random() * power).toFixed(0);
 }
+
+export async function genShowcase(slug?: string) {
+  return {
+    id: '9fd2358e7448d90b059127d03',
+    name: '행복할인',
+    slug: slug || 'slug',
+    products: [
+      await genProductDetail(),
+      await genProductDetail(),
+      await genProductDetail(),
+      await genProductDetail()
+    ]
+  };
+}
+
+export async function genShowcases() {
+  return {
+    data: {
+      items: [
+        await genShowcase(),
+        await genShowcase(),
+        await genShowcase(),
+        await genShowcase(),
+        await genShowcase(),
+        await genShowcase(),
+      ],
+      currentItemCount: 5,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 5,
+      totalPages: 10,
+    },
+  };
+}
