@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-interface InitializeOptions {
+export interface InitializeOptions {
+  host: string;
   version: number;
   apiKey: string;
   secret: string;
@@ -45,7 +46,7 @@ export async function request(
   if (path[0] === '/') {
     path = path.slice(1);
   }
-  let realPath = `http://localhost:3000/api/v${globalOption.version}/shops/${globalOption.shopId}/${path}`;
+  let realPath = `${globalOption.host}/api/v${globalOption.version}/shops/${globalOption.shopId}/${path}`;
   let bodyData = {};
   if (data !== undefined) {
     if (typeof data !== 'object') {

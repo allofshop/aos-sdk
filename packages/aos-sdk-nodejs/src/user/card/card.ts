@@ -1,7 +1,7 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
 import { StringValidator } from '~/base/validator';
-
+import Config from '~/config';
 
 // TODO: 서버 Dto가 정해져 있지 않습니다.
 export async function createUserCard(body: any) {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * @copyright Copyright © 2018-2019 Corretto, Inc. All rights reserved.
  */
@@ -19,6 +18,8 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, '.dist'),
+    library: 'aos-sdk-nodejs',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [

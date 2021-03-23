@@ -54,7 +54,7 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
-    "@allofshop/aos-sdk-nodejs-lite": "^1.0.0-alpha.5",
+    "@allofshop/aos-sdk-nodejs-lite": "1.0.0-alpha.6",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0"

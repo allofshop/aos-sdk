@@ -1,13 +1,19 @@
 /**
  * @copyright Copyright © 2018-2019 Corretto, Inc. All rights reserved.
  */
-import AosSdk from '../../src';
+import * as AosSdkNodejsLite from '../src';
 
  describe('Category', () => {
   it('init', async () => {
     expect('a').toBe('a');
-    // AosSdk.setConfig({mode: "DEVELOPMENT"});
-    AosSdk.User.createUserCard({});
+    AosSdkNodejsLite.initialize({
+      host: 'http://localhost:3000',
+      apiKey: '44',
+      secret: '33',
+      shopId: '22',
+      version: 4,
+    })
+    // AosSdk.User.createUserCard({});
   });
 });
 // import * as aos from '../../src';

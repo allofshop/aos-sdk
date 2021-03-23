@@ -29,6 +29,7 @@ module.exports = {
         memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple'],
       },
     ],
+    'import/default': 'off',
     // sort for imports.
     'import/order': [
       'error',
