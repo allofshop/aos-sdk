@@ -70,5 +70,5 @@
       "~/(.*)$": "<rootDir>/src/$1"
     }
   },
-  "gitHead": "b3cdc7e275ff91eaa53be5a062563ea4498e3347"
+  "gitHead": "9fd2358e7448d90b059127d034f35b30ffdaa420"
 }
