@@ -19,6 +19,7 @@ export async function getCategoryTree(query: FindTreeDto) {
   findTreeValidator.validate(query, 'query');
 
   if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /categories/tree`);
     return genCategoryList();
   }
 
@@ -28,6 +29,11 @@ export async function getCategoryTree(query: FindTreeDto) {
 export async function getCategories(query: FindDto) {
   const findValidator: FindValidator = new FindValidator();
   findValidator.validate(query, 'query');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /categories`);
+    return genCategoryList();
+  }
 
   return await lite.request('GET', `categories`, { query });
 }
