@@ -6,8 +6,14 @@ import AosSdk from '../../src';
  describe('Category', () => {
   it('init', async () => {
     expect('a').toBe('a');
-    // AosSdk.setConfig({mode: "DEVELOPMENT"});
-    AosSdk.User.createUserCard({});
+    AosSdk.setConfig({
+      apiKey: 'shopId',
+      host: 'aosSdkHost',
+      mode: "DEVELOPMENT",
+      secret: 'aosSdkSecret',
+      shopId: 'shopId',
+      version: 4,
+    });
   });
 });
 // import * as aos from '../../src';

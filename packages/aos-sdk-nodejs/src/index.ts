@@ -10,7 +10,8 @@ import * as Review from './review';
 import * as Sales from './sales';
 import * as User from './user';
 
-const aos = {
+
+export default {
   Auth,
   Board,
   Catalog,
@@ -28,7 +29,6 @@ const aos = {
       shopId: config.shopId,
       version: config.version,
     })
-  }
+  },
+  getConfig: () => Config.mode,
 }
-
-export default aos;
