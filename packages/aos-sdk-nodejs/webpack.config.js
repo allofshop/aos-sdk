@@ -16,7 +16,7 @@ module.exports = {
   },
   entry: './src/index.ts',
   output: {
-    filename: '[name].js',
+    filename: 'index.js',
     path: path.resolve(__dirname, '.dist'),
     library: 'aos-sdk-nodejs',
     libraryTarget: 'umd',
