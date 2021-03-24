@@ -20,7 +20,7 @@ export async function getShowcase(slug: string) {
 export async function getShowcases(query: any) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /showcases`);
-    return genShowcases();
+    return genShowcases(query.slug);
   }
   return await lite.request('GET', 'showcases', { query });
 }

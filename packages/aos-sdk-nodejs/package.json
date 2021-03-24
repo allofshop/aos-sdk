@@ -1,6 +1,6 @@
 {
   "name": "@allofshop/aos-sdk-nodejs",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.0-alpha.13",
   "description": "AOS SDK for NodeJS",
   "main": ".dist/index.js",
   "types": ".dist/src/index.d.ts",
@@ -10,7 +10,8 @@
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "lint": "./node_modules/.bin/eslint src/**",
-    "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js"
+    "build": "lerna run build",
+    "publish": "npm run build && lerna publish"
   },
   "author": {
     "name": "All Of Shop",

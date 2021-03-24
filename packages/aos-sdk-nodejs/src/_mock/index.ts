@@ -389,16 +389,16 @@ export async function genShowcase(slug?: string) {
   };
 }
 
-export async function genShowcases() {
+export async function genShowcases(slug?: string) {
   return {
     data: {
       items: [
-        await _genShowcase(),
-        await _genShowcase(),
-        await _genShowcase(),
-        await _genShowcase(),
-        await _genShowcase(),
-        await _genShowcase(),
+        await _genShowcase(slug),
+        await _genShowcase(slug),
+        await _genShowcase(slug),
+        await _genShowcase(slug),
+        await _genShowcase(slug),
+        await _genShowcase(slug),
       ],
       currentItemCount: 5,
       itemsPerPage: 20,
