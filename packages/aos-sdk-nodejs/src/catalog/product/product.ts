@@ -13,7 +13,7 @@ export async function getProduct(productId: string) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /products/${productId}`);
-    return genProductDetail();
+    return await genProductDetail();
   }
 
   return await lite.request('GET', `products/${productId}`);
@@ -25,7 +25,7 @@ export async function getProducts(query: FindDto) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /products`);
-    return genProductList();
+    return await genProductList();
   }
 
   return await lite.request('GET', 'products', { query });

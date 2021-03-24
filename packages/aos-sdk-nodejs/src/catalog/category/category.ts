@@ -20,7 +20,7 @@ export async function getCategoryTree(query: FindTreeDto) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /categories/tree`);
-    return genCategoryList();
+    return await genCategoryList();
   }
 
   return await lite.request('GET', `categories/tree`, { query });
@@ -32,7 +32,7 @@ export async function getCategories(query: FindDto) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /categories`);
-    return genCategoryList();
+    return await genCategoryList();
   }
 
   return await lite.request('GET', `categories`, { query });

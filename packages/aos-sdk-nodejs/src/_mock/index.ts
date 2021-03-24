@@ -2,6 +2,8 @@
  * @copyright Copyright © 2018-2019 Corretto, Inc. All rights reserved.
  */
 
+import { sign } from 'jsonwebtoken';
+
 export async function genArticleList() {
   return {
     data: {
@@ -350,7 +352,7 @@ async function genProductItem() {
   };
 }
 
-async function genCartItem() {
+export async function genCartItem() {
   return {
     id: '9fd2358e7448d90b059127d03',
     quantity: getRandomNumber(100),
@@ -398,6 +400,65 @@ export async function genShowcases() {
       startIndex: 0,
       totalItems: 5,
       totalPages: 10,
+    },
+  };
+}
+
+export async function genUser() {
+  return {
+    data: {
+      id: 'asdf',
+      name: {
+        first: 'first',
+        last: 'last',
+        middle: 'middle',
+      }
+    }
+  }
+
+}
+
+export async function genLogin(secret: string) {
+  const accessToken = await sign({
+    kid: '627f6dbe-0f44-43b1-a376-9c2ead272fa2',
+  }, secret);
+
+  const user = await genUser();
+
+  const idToken = await sign(user, secret);
+
+  return {
+    data: {
+      access_token: accessToken,
+      expires_in: 86400,
+      id_token: idToken,
+      refresh_token: accessToken,
+      scope: "openid profile",
+      token_type: "Bearer"
+    },
+  };
+}
+
+export async function genJoin() {
+  return {
+    data: {
+      success: true
+    },
+  };
+}
+
+export async function genLogout() {
+  return {
+    data: {
+      success: true
+    },
+  };
+}
+
+export async function genChangePassword() {
+  return {
+    data: {
+      success: true
     },
   };
 }

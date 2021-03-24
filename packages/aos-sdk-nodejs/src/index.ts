@@ -1,4 +1,4 @@
-import { InitializeOptions, initialize } from '@allofshop/aos-sdk-nodejs-lite';
+import { initialize } from '@allofshop/aos-sdk-nodejs-lite';
 
 import * as Auth from './auth';
 import * as Board from './board';
@@ -10,7 +10,6 @@ import * as Review from './review';
 import * as Sales from './sales';
 import * as User from './user';
 
-
 export default {
   Auth,
   Board,
@@ -20,14 +19,10 @@ export default {
   Review,
   Sales,
   User,
-  setConfig: (config: ConfigInterface & InitializeOptions ) => {
-    Config.mode = config.mode;
+  setConfig: (config: ConfigInterface ) => {
+    Object.assign(Config, config);
     initialize({
-      apiKey: config.apiKey,
-      host: config.host,
-      secret: config.secret,
-      shopId: config.shopId,
-      version: config.version,
+      ...config,
     })
   },
   getConfig: () => Config.mode,

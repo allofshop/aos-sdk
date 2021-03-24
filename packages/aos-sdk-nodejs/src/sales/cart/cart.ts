@@ -1,6 +1,8 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
+import { genCartDetail, genCartItem } from '~/_mock';
 import { StringValidator } from '~/base/validator';
+import Config from '~/config';
 
 import {
   CheckoutOneByIdDto,
@@ -29,12 +31,22 @@ export async function addCartItem(cartId: string, body: CreateItemDto) {
   const createItemValidator: CreateItemValidator = new CreateItemValidator();
   createItemValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/${cartId}/items`);
+    return await genCartItem();
+  }
+
   return await lite.request('POST', `carts/${cartId}/items`, { body });
 }
 
 export async function addDefaultCartItem(body: CreateItemDto) {
   const createItemValidator: CreateItemValidator = new CreateItemValidator();
   createItemValidator.validate(body, 'body');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/default/items`);
+    return await genCartItem();
+  }
 
   return await lite.request('POST', `carts/default/items`, { body });
 }
@@ -43,10 +55,19 @@ export async function getCart(cartId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(cartId, 'cartId');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/${cartId}`);
+    return await genCartDetail();
+  }
+
   return await lite.request('GET', `carts/${cartId}`);
 }
 
 export async function getDefaultCart() {
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/default`);
+    return await genCartDetail();
+  }
   return await lite.request('GET', `carts/default`);
 }
 
@@ -61,6 +82,11 @@ export async function updateCartItem(
 
   const updateItemByIdValidator: UpdateItemByIdValidator = new UpdateItemByIdValidator();
   updateItemByIdValidator.validate(body, 'body');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/${cartId}/items/${cartItemId}`);
+    return await genCartItem();
+  }
 
   return await lite.request('PATCH', `carts/${cartId}/items/${cartItemId}`, {
     body,
@@ -77,6 +103,11 @@ export async function updateDefaultCartItem(
   const updateItemByIdValidator: UpdateItemByIdValidator = new UpdateItemByIdValidator();
   updateItemByIdValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/default/items/${cartItemId}`);
+    return await genCartItem();
+  }
+
   return await lite.request('PATCH', `carts/default/items/${cartItemId}`, {
     body,
   });
@@ -87,6 +118,13 @@ export async function deleteCartItem(cartId: string, cartItemId: string) {
   stringValidator.validate(cartId, 'cartId');
   stringValidator.validate(cartItemId, 'cartItemId');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/${cartId}/items/${cartItemId}`);
+    return {
+      success: true,
+    }
+  }
+
   return await lite.request('DELETE', `carts/${cartId}/items/${cartItemId}`);
 }
 
@@ -94,12 +132,26 @@ export async function deleteDefaultCartItem(cartItemId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(cartItemId, 'cartItemId');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/default/items/${cartItemId}`);
+    return {
+      success: true,
+    }
+  }
+
   return await lite.request('DELETE', `carts/default/items/${cartItemId}`);
 }
 
 export async function deleteCartItems(cartId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(cartId, 'cartId');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/${cartId}/items`);
+    return {
+      success: true,
+    }
+  }
 
   return await lite.request('DELETE', `carts/${cartId}/items`);
 }
@@ -112,10 +164,17 @@ export async function deleteCart(cartId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(cartId, 'cartId');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/${cartId}`);
+    return {
+      success: true,
+    }
+  }
+
   return await lite.request('DELETE', `carts/${cartId}`);
 }
 
-export async function validateoutCart(
+export async function checkoutCart(
   cartId: string,
   body: CheckoutOneByIdDto
 ) {
@@ -125,12 +184,12 @@ export async function validateoutCart(
   const checkoutOneByIdValidator: CheckoutOneByIdValidator = new CheckoutOneByIdValidator();
   checkoutOneByIdValidator.validate(body, 'body');
 
-  return await lite.request('POST', `carts/${cartId}/validateout`, { body });
+  return await lite.request('POST', `carts/${cartId}/checkout`, { body });
 }
 
-export async function validateoutDefaultCart(body: CheckoutOneByIdDto) {
+export async function checkoutDefaultCart(body: CheckoutOneByIdDto) {
   const checkoutOneByIdValidator: CheckoutOneByIdValidator = new CheckoutOneByIdValidator();
   checkoutOneByIdValidator.validate(body, 'body');
 
-  return await lite.request('POST', `carts/default/validateout`, { body });
+  return await lite.request('POST', `carts/default/checkout`, { body });
 }
