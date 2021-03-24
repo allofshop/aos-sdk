@@ -400,12 +400,12 @@ export async function genShowcases(slug?: string) {
         await _genShowcase(slug),
         await _genShowcase(slug),
       ],
-      currentItemCount: 5,
+      currentItemCount: 6,
       itemsPerPage: 20,
       pageIndex: 0,
       startIndex: 0,
-      totalItems: 5,
-      totalPages: 10,
+      totalItems: 6,
+      totalPages: 1,
     },
   };
 }
@@ -469,10 +469,10 @@ export async function genChangePassword() {
   };
 }
 
-export async function _genBanner(sectionName?: string) {
+export async function _genBanner(sectionName: string = 'sectionName') {
   return {
-    title: '',
-    sectionName,
+    title: 'title',
+    sectionName: sectionName,
     pc: {
       link: 'http://localhost:3000'
     },
