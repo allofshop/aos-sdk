@@ -371,7 +371,7 @@ async function genProductItem() {
   return {
     id: v4(),
     name: 'A상품명A',
-    featureImages: [await _genImageFile(), await _genImageFile(), await _genImageFile()],
+    featuredImages: [await _genImageFile(), await _genImageFile(), await _genImageFile()],
     price,
     discountedPrice,
     discountPrice,
