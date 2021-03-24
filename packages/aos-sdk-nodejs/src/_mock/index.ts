@@ -379,10 +379,10 @@ async function _genShowcase(slug?: string) {
     name: '행복할인',
     slug: slug || 'slug',
     products: [
-      await genProductDetail(),
-      await genProductDetail(),
-      await genProductDetail(),
-      await genProductDetail()
+      await _genProductDetail(),
+      await _genProductDetail(),
+      await _genProductDetail(),
+      await _genProductDetail()
     ]
   };
 }
