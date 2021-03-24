@@ -369,7 +369,7 @@ function getRandomNumber(power: number) {
   return (Math.random() * power).toFixed(0);
 }
 
-export async function genShowcase(slug?: string) {
+async function _genShowcase(slug?: string) {
   return {
     id: '9fd2358e7448d90b059127d03',
     name: '행복할인',
@@ -383,16 +383,22 @@ export async function genShowcase(slug?: string) {
   };
 }
 
+export async function genShowcase(slug?: string) {
+  return {
+    data: await _genShowcase(slug),
+  };
+}
+
 export async function genShowcases() {
   return {
     data: {
       items: [
-        await genShowcase(),
-        await genShowcase(),
-        await genShowcase(),
-        await genShowcase(),
-        await genShowcase(),
-        await genShowcase(),
+        await _genShowcase(),
+        await _genShowcase(),
+        await _genShowcase(),
+        await _genShowcase(),
+        await _genShowcase(),
+        await _genShowcase(),
       ],
       currentItemCount: 5,
       itemsPerPage: 20,
@@ -460,5 +466,50 @@ export async function genChangePassword() {
     data: {
       success: true
     },
+  };
+}
+
+export async function _genBanner(sectionName?: string) {
+  return {
+    title: '',
+    sectionName,
+    pc: {
+      link: 'http://localhost:3000'
+    },
+    image: {
+      original: {
+        location: 'https://picsum.photos/1110/400'
+      },
+      '1x': {
+        location: 'https://picsum.photos/1110/400'
+      },
+      '2x': {
+        location: 'https://picsum.photos/1110/400'
+      },
+      '3x': {
+        location: 'https://picsum.photos/1110/400'
+      },
+    }
+  }
+}
+
+export async function genBanners(sectionName?: string) {
+  return {
+    data: {
+      items: [
+        await _genBanner(sectionName),
+        await _genBanner(sectionName),
+        await _genBanner(sectionName),
+        await _genBanner(sectionName),
+        await _genBanner(sectionName),
+        await _genBanner(sectionName),
+      ],
+      currentItemCount: 6,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 6,
+      totalPages: 1,
+    }
   };
 }
