@@ -108,38 +108,42 @@ export async function genProductList() {
   };
 }
 
+async function _genProductDetail() {
+  return {
+    id: '9fd2358e7448d90b059127d03',
+    name: '상품명',
+    price: getRandomNumber(10000),
+    option: {
+      type: 'COMBINE',
+      name: '옵션 이름',
+      items: [
+        await genProductOptionItem(),
+        await genProductOptionItem(),
+        await genProductOptionItem(),
+        await genProductOptionItem(),
+      ],
+      variants: [
+        await genProductVariant(),
+        await genProductVariant(),
+        await genProductVariant(),
+        await genProductVariant(),
+        await genProductVariant(),
+        await genProductVariant(),
+      ],
+      extras: [
+        await genProductOptionExtra(),
+        await genProductOptionExtra(),
+        await genProductOptionExtra(),
+        await genProductOptionExtra(),
+        await genProductOptionExtra(),
+      ],
+    },
+  };
+}
+
 export async function genProductDetail() {
   return {
-    data: {
-      id: '9fd2358e7448d90b059127d03',
-      name: '상품명',
-      price: getRandomNumber(10000),
-      option: {
-        type: 'COMBINE',
-        name: '옵션 이름',
-        items: [
-          await genProductOptionItem(),
-          await genProductOptionItem(),
-          await genProductOptionItem(),
-          await genProductOptionItem(),
-        ],
-        variants: [
-          await genProductVariant(),
-          await genProductVariant(),
-          await genProductVariant(),
-          await genProductVariant(),
-          await genProductVariant(),
-          await genProductVariant(),
-        ],
-        extras: [
-          await genProductOptionExtra(),
-          await genProductOptionExtra(),
-          await genProductOptionExtra(),
-          await genProductOptionExtra(),
-          await genProductOptionExtra(),
-        ],
-      },
-    },
+    data: await _genProductDetail(),
   };
 }
 
