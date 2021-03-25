@@ -289,6 +289,15 @@ export async function genOrder() {
       code: v4(),
       id: v4(),
       availableCoupons: [],
+      recipient: {
+        name: '정지승',
+        mainPhoneNumber: '01030801376',
+        address: {
+          zipcode: '03455',
+          address1: '서울특별시 은평구 응알모 261',
+          address2: '3층',
+        }
+      },
       items: [
         await _genOrderItem(),
         await _genOrderItem(),
@@ -324,6 +333,15 @@ export async function _genOrderItem() {
       code: v4(),
       quantity: getRandomNumber(10),
       status: 'COMPLETED',
+    },
+    stats: {
+      mileagePoint: getRandomNumber(100000),
+      discountPrice: getRandomNumber(100000),
+      couponPrice: getRandomNumber(100000),
+      price: getRandomNumber(100000),
+      priceBeforeDiscount: getRandomNumber(100000),
+      priceBeforeTax: getRandomNumber(100000),
+      taxPrice: getRandomNumber(100000),
     }
   }
 }
@@ -340,6 +358,15 @@ export async function _genOrderListItem() {
       await _genOrderItem(),
       await _genOrderItem(),
     ],
+    recipient: {
+      name: '정지승',
+      mainPhoneNumber: '01030801376',
+      address: {
+        zipcode: '03455',
+        address1: '서울특별시 은평구 응알모 261',
+        address2: '3층',
+      }
+    },
     stats: {
       product: {
         price: getRandomNumber(100000),
