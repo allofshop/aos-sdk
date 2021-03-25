@@ -288,21 +288,21 @@ export async function genOrder() {
       type: 'ORDER',
       code: v4(),
       id: v4(),
-      title: '제목제목',
-      price: getRandomNumber(10000),
-      content: 'sodydsodyd',
       availableCoupons: [],
+      items: [
+        await _genOrderItem(),
+        await _genOrderItem(),
+        await _genOrderItem(),
+      ],
       stats: {
         product: {
-          basic: {
-            price: getRandomNumber(100000),
-            priceBeforeTax: getRandomNumber(100000),
-            taxPrice: getRandomNumber(100000),
-            priceBeforeDiscount: getRandomNumber(100000),
-            discountPrice: getRandomNumber(100000),
-            couponPrice: getRandomNumber(100000),
-            mileagePoint: getRandomNumber(100000),
-          },
+          price: getRandomNumber(100000),
+          priceBeforeTax: getRandomNumber(100000),
+          taxPrice: getRandomNumber(100000),
+          priceBeforeDiscount: getRandomNumber(100000),
+          discountPrice: getRandomNumber(100000),
+          couponPrice: getRandomNumber(100000),
+          mileagePoint: getRandomNumber(100000),
         },
         mileagePoint: getRandomNumber(100000),
         discountPrice: getRandomNumber(100000),
@@ -312,6 +312,70 @@ export async function genOrder() {
         priceBeforeTax: getRandomNumber(100000),
         taxPrice: getRandomNumber(100000),
       },
+    },
+  };
+}
+
+export async function _genOrderItem() {
+  return {
+    product: {
+      name: '상품이름',
+      price: getRandomNumber(10000),
+      code: v4(),
+      quantity: getRandomNumber(10),
+      status: 'COMPLETED',
+    }
+  }
+}
+
+export async function _genOrderListItem() {
+  return {
+    status: 'DRAFT',
+    type: 'ORDER',
+    code: v4(),
+    id: v4(),
+    availableCoupons: [],
+    items: [
+      await _genOrderItem(),
+      await _genOrderItem(),
+      await _genOrderItem(),
+    ],
+    stats: {
+      product: {
+        price: getRandomNumber(100000),
+        priceBeforeTax: getRandomNumber(100000),
+        taxPrice: getRandomNumber(100000),
+        priceBeforeDiscount: getRandomNumber(100000),
+        discountPrice: getRandomNumber(100000),
+        couponPrice: getRandomNumber(100000),
+        mileagePoint: getRandomNumber(100000),
+      },
+      mileagePoint: getRandomNumber(100000),
+      discountPrice: getRandomNumber(100000),
+      couponPrice: getRandomNumber(100000),
+      price: getRandomNumber(100000),
+      priceBeforeDiscount: getRandomNumber(100000),
+      priceBeforeTax: getRandomNumber(100000),
+      taxPrice: getRandomNumber(100000),
+    },
+  };
+}
+
+export async function getOrderList() {
+  return {
+    data: {
+      items: [
+        await _genOrderListItem(),
+        await _genOrderListItem(),
+        await _genOrderListItem(),
+        await _genOrderListItem(),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
     },
   };
 }
