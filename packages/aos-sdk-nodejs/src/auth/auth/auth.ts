@@ -6,6 +6,7 @@ import Config from '~/config';
 import {
   ChangePasswordDto,
   JoinDto,
+  LoginDto,
   LogoutDto,
   RequestVerificationMessageDto,
 } from './type';
@@ -18,13 +19,13 @@ import {
 
 
 
-export async function login() {
+export async function login(body: LoginDto) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /auth/login`);
     return await genLogin(Config.mode);
   }
 
-  return await request('POST', 'auth/login');
+  return await request('POST', 'auth/login', { body });
 }
 
 export async function join(body: JoinDto) {
