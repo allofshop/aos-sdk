@@ -4,6 +4,7 @@ import { genShowcase, genShowcases } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
+
 export async function getShowcase(slug: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(slug, 'slug');

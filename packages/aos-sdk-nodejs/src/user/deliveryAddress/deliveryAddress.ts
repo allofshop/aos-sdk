@@ -1,6 +1,9 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
+import { genUserDeliveryAddress, genUserDeliveryAddressList } from '~/_mock';
 import { StringValidator } from '~/base/validator';
+import Config from '~/config';
+
 
 import {
   CreateDeliveryAddressDto,
@@ -19,10 +22,20 @@ export async function createUserDeliveryAddress(
   const createDeliveryAddressValidator: CreateDeliveryAddressValidator = new CreateDeliveryAddressValidator();
   createDeliveryAddressValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genUserDeliveryAddress();
+  }
+
   return await lite.request('POST', `users/me/deliveryAddresses`, { body });
 }
 
 export async function getDefaultUserDeilveryAddress() {
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genUserDeliveryAddress();
+  }
+
   return await lite.request('GET', `users/me/deliveryAddresses/default`);
 }
 
@@ -36,6 +49,11 @@ export async function updateUserDeliveryAddress(
   const updateDeliveryAddressByIdValidator: UpdateDeliveryAddressByIdValidator = new UpdateDeliveryAddressByIdValidator();
   updateDeliveryAddressByIdValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genUserDeliveryAddress();
+  }
+
   return await lite.request(
     'PATCH',
     `users/me/deliveryAddresses/${deliveryAddressId}`,
@@ -47,6 +65,13 @@ export async function deleteUserDeliveryAddress(deliveryAddressId: string) {
   const stringValidator = new StringValidator();
   stringValidator.validate(deliveryAddressId, 'deliveryAddressId');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {
+      deleted: true,
+    };
+  }
+
   return await lite.request(
     'DELETE',
     `users/me/deliveryAddresses/${deliveryAddressId}`
@@ -56,6 +81,11 @@ export async function deleteUserDeliveryAddress(deliveryAddressId: string) {
 export async function getUserDeliveryAddresses(query: FindDeliveryAdressesDto) {
   const findDeliveryAdrressesValidator: FindDeliveryAddressesValidator = new FindDeliveryAddressesValidator();
   findDeliveryAdrressesValidator.validate(query, 'query');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genUserDeliveryAddressList();
+  }
 
   return await lite.request('GET', `users/me/deliveryAddresses`, { query });
 }

@@ -1,6 +1,8 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
 import { StringValidator } from '~/base/validator';
+import Config from '~/config';
+
 
 import {
   CreateSubscriptionDto,
@@ -17,12 +19,22 @@ export async function createUserSubscription(body: CreateSubscriptionDto) {
   const createSubscriptionValidator: CreateSubscriptionValidator = new CreateSubscriptionValidator();
   createSubscriptionValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
+
   return await lite.request('POST', `users/me/subscriptions`, { body });
 }
 
 export async function getUserSubscription(subscriptionId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(subscriptionId, 'subscriptionId');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
 
   return await lite.request('GET', `users/me/subscriptions/${subscriptionId}`);
 }
@@ -36,6 +48,11 @@ export async function updateUserSubscription(
 
   const updateSubscriptionValidator: UpdateSubscriptionByIdValidator = new UpdateSubscriptionByIdValidator();
   updateSubscriptionValidator.validate(body, 'body');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
 
   return await lite.request(
     'PATCH',

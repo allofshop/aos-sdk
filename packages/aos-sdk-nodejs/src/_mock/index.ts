@@ -217,6 +217,7 @@ export async function genProductOptionExtra() {
 export async function genOrderCheckout() {
   return {
     data: {
+      ...await _genOrder(),
       availableMileage: getRandomNumber(1000),
       availableCoupons: [
         await genAvailableCoupon(),
@@ -289,52 +290,58 @@ export async function genReviewList() {
   };
 }
 
-export async function genOrder() {
+async function _genOrder() {
   return {
-    data: {
-      status: 'DRAFT',
-      type: 'ORDER',
-      code: v4(),
-      id: v4(),
-      availableCoupons: [],
-      recipient: {
-        name: '정지승',
-        mainPhoneNumber: '01030801376',
-        address: {
-          zipcode: '03455',
-          address1: '서울특별시 은평구 응알모 261',
-          address2: '3층',
-        }
-      },
-      items: [
-        await _genOrderItem(),
-        await _genOrderItem(),
-        await _genOrderItem(),
-      ],
-      stats: {
-        product: {
-          price: getRandomNumber(100000),
-          priceBeforeTax: getRandomNumber(100000),
-          taxPrice: getRandomNumber(100000),
-          priceBeforeDiscount: getRandomNumber(100000),
-          discountPrice: getRandomNumber(100000),
-          couponPrice: getRandomNumber(100000),
-          mileagePoint: getRandomNumber(100000),
-        },
-        mileagePoint: getRandomNumber(100000),
-        discountPrice: getRandomNumber(100000),
-        couponPrice: getRandomNumber(100000),
+    status: 'DRAFT',
+    type: 'ORDER',
+    code: v4(),
+    id: v4(),
+    availableCoupons: [],
+    recipient: {
+      name: '정지승',
+      mainPhoneNumber: '01030801376',
+      address: {
+        zipcode: '03455',
+        address1: '서울특별시 은평구 응알모 261',
+        address2: '3층',
+      }
+    },
+    items: [
+      await _genOrderItem(),
+      await _genOrderItem(),
+      await _genOrderItem(),
+    ],
+    stats: {
+      product: {
         price: getRandomNumber(100000),
-        priceBeforeDiscount: getRandomNumber(100000),
         priceBeforeTax: getRandomNumber(100000),
         taxPrice: getRandomNumber(100000),
+        priceBeforeDiscount: getRandomNumber(100000),
+        discountPrice: getRandomNumber(100000),
+        couponPrice: getRandomNumber(100000),
+        mileagePoint: getRandomNumber(100000),
       },
+      mileagePoint: getRandomNumber(100000),
+      discountPrice: getRandomNumber(100000),
+      couponPrice: getRandomNumber(100000),
+      price: getRandomNumber(100000),
+      priceBeforeDiscount: getRandomNumber(100000),
+      priceBeforeTax: getRandomNumber(100000),
+      taxPrice: getRandomNumber(100000),
     },
+  };
+}
+
+export async function genOrder() {
+  return {
+    data: await _genOrder(),
   };
 }
 
 export async function _genOrderItem() {
   return {
+    id: v4(),
+    code: v4(),
     product: {
       name: '상품이름',
       price: getRandomNumber(10000),
@@ -649,6 +656,176 @@ export async function genReputation() {
   return {
     data: {
       score: getRandomNumber(1000),
+    }
+  }
+}
+
+export async function genWishlist() {
+  return {
+    data: {
+      name: 'wish',
+      isDefault: true,
+      products: [
+        await _genProductDetail(),
+        await _genProductDetail(),
+        await _genProductDetail(),
+        await _genProductDetail(),
+      ],
+    }
+  }
+}
+
+export async function genWriteableOrderItem() {
+  return {
+    data: {
+      items: [
+        await _genOrderItem(),
+        await _genOrderItem(),
+        await _genOrderItem(),
+        await _genOrderItem(),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
+    },
+  }
+}
+
+async function _genMileageListItem() {
+  return {
+    id: v4(),
+    available: true,
+    point: getRandomNumber(1000),
+    comment: 'mileage',
+  };
+}
+
+export async function genUserMileageList() {
+  return {
+    data: {
+      items: [
+        await _genMileageListItem(),
+        await _genMileageListItem(),
+        await _genMileageListItem(),
+        await _genMileageListItem(),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
+    },
+  }
+}
+
+
+async function _genUserDeliveryAddress(isDefault: boolean) {
+  return {
+    id: v4(),
+    isDefault,
+    name: '우리집',
+    recipientName: 'david',
+    address: {
+      zipcode: '03455',
+      address1: '서울특별시 은평구 응알모 261',
+      address2: '3층',
+    },
+    mainPhoneNumber: '01033333333',
+    subPhoneNumber: '01022222222',
+  }
+}
+
+export async function genUserDeliveryAddress() {
+  return {
+    data: await _genUserDeliveryAddress(true),
+  }
+}
+
+export async function genUserDeliveryAddressList() {
+  return {
+    data: {
+      items: [
+        await _genUserDeliveryAddress(true),
+        await _genUserDeliveryAddress(false),
+        await _genUserDeliveryAddress(false),
+        await _genUserDeliveryAddress(false),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
+    },
+  }
+}
+
+async function _genCouponListItem() {
+  return {
+    id: v4(),
+    code: v4(),
+    coupon: {
+      name: '상품 적용 쿠폰!',
+    }
+  };
+}
+
+export async function genUserCouponList() {
+  return {
+    data: {
+      items: [
+        await _genCouponListItem(),
+        await _genCouponListItem(),
+        await _genCouponListItem(),
+        await _genCouponListItem(),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
+    },
+  }
+}
+
+async function _genComment() {
+  return {
+    id: v4(),
+    author: {
+      displayName: 'author',
+    },
+    content: 'content'
+  };
+}
+
+export async function genComment() {
+  return {
+    data: {
+      ...await _genComment(),
+    }
+  }
+}
+
+export async function genCommentList() {
+  return {
+    data: {
+      items: [
+        await _genComment(),
+        await _genComment(),
+        await _genComment(),
+        await _genComment(),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
     }
   }
 }

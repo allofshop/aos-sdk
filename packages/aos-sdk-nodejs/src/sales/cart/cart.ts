@@ -1,6 +1,6 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
-import { genCartDetail, genCartItem } from '~/_mock';
+import { genCartDetail, genCartItem, genOrder } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
@@ -121,7 +121,7 @@ export async function deleteCartItem(cartId: string, cartItemId: string) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /carts/${cartId}/items/${cartItemId}`);
     return {
-      success: true,
+      deleted: true,
     }
   }
 
@@ -135,7 +135,7 @@ export async function deleteDefaultCartItem(cartItemId: string) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /carts/default/items/${cartItemId}`);
     return {
-      success: true,
+      deleted: true,
     }
   }
 
@@ -149,7 +149,7 @@ export async function deleteCartItems(cartId: string) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /carts/${cartId}/items`);
     return {
-      success: true,
+      deleted: true,
     }
   }
 
@@ -157,6 +157,13 @@ export async function deleteCartItems(cartId: string) {
 }
 
 export async function deleteDefaultCartItems() {
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: /carts/default/items`);
+    return {
+      deleted: true,
+    }
+  }
+
   return await lite.request('DELETE', `carts/default/items`);
 }
 
@@ -167,7 +174,7 @@ export async function deleteCart(cartId: string) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /carts/${cartId}`);
     return {
-      success: true,
+      deleted: true,
     }
   }
 
@@ -184,12 +191,22 @@ export async function checkoutCart(
   const checkoutOneByIdValidator: CheckoutOneByIdValidator = new CheckoutOneByIdValidator();
   checkoutOneByIdValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genOrder();
+  }
+
   return await lite.request('POST', `carts/${cartId}/checkout`, { body });
 }
 
 export async function checkoutDefaultCart(body: CheckoutOneByIdDto) {
   const checkoutOneByIdValidator: CheckoutOneByIdValidator = new CheckoutOneByIdValidator();
   checkoutOneByIdValidator.validate(body, 'body');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genOrder();
+  }
 
   return await lite.request('POST', `carts/default/checkout`, { body });
 }

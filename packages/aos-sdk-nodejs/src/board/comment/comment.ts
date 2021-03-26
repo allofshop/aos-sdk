@@ -1,6 +1,9 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
+import { genComment, genCommentList } from '~/_mock';
 import { StringValidator } from '~/base/validator';
+import Config from '~/config';
+
 
 import { CreateDto, FindByArticleIdDto, UpdateOneByIdDto } from './type';
 import {
@@ -20,6 +23,11 @@ export async function createComment(
 
   const createValidator = new CreateValidator();
   createValidator.validate(body, 'body');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genComment();
+  }
 
   return await lite.request(
     'POST',
@@ -42,6 +50,11 @@ export async function updateComment(
   const updateOneByIdValidator = new UpdateOneByIdValidator();
   updateOneByIdValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genComment();
+  }
+
   return await lite.request(
     'PATCH',
     `boards/${boardId}/articles/${articleId}/comments/${commentId}`,
@@ -58,6 +71,13 @@ export async function deleteComment(
   stringValidator.validate(boardId, 'boardId');
   stringValidator.validate(articleId, 'articleId');
   stringValidator.validate(commentId, 'commentId');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {
+      deleted: true,
+    };
+  }
 
   return await lite.request(
     'DELETE',
@@ -76,6 +96,11 @@ export async function getComments(
 
   const findByArticleIdValidator = new FindByArticleIdValidator();
   findByArticleIdValidator.validate(query, 'query');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genCommentList();
+  }
 
   return await lite.request(
     'GET',

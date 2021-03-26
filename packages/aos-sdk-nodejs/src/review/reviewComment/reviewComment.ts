@@ -1,6 +1,8 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
 import { StringValidator } from '~/base/validator';
+import Config from '~/config';
+
 
 import { CreateDto, UpdateOneByIdDto } from './type';
 import { CreateValidator, UpdateOneByIdValidator } from './validator';
@@ -12,6 +14,11 @@ export async function createReviewComment(reviewId: string, body: CreateDto) {
   const createValidator: CreateValidator = new CreateValidator();
   createValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
+
   return await lite.request('POST', `reviews/${reviewId}/comments`, { body });
 }
 
@@ -19,6 +26,11 @@ export async function getReviewComment(reviewId: string, commentId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(reviewId, 'reviewId');
   stringValidator.validate(commentId, 'commentId');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
 
   return await lite.request('GET', `reviews/${reviewId}/comments/${commentId}`);
 }
@@ -35,6 +47,11 @@ export async function updateReviewComment(
   const updateOneByIdValidator: UpdateOneByIdValidator = new UpdateOneByIdValidator();
   updateOneByIdValidator.validate(body, 'body');
 
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
+
   return await lite.request(
     'PATCH',
     `reviews/${reviewId}/comments/${commentId}`,
@@ -48,6 +65,11 @@ export async function deleteReviewComment(reviewId: string, commentId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(reviewId, 'reviewId');
   stringValidator.validate(commentId, 'commentId');
+
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return {};
+  }
 
   return await lite.request(
     'DELETE',
