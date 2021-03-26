@@ -609,25 +609,27 @@ export async function genChangePassword() {
 
 export async function _genBanner(sectionName: string = 'sectionName') {
   return {
+    id: v4(),
     title: 'title',
-    sectionName: sectionName,
+    subtitle: 'subtitle',
+    sectionName,
     pc: {
-      link: 'http://localhost:3000'
+      link: 'http://localhost:3000',
+      image: {
+        original: {
+          location: 'https://picsum.photos/1110/400'
+        },
+        '1x': {
+          location: 'https://picsum.photos/1110/400'
+        },
+        '2x': {
+          location: 'https://picsum.photos/1110/400'
+        },
+        '3x': {
+          location: 'https://picsum.photos/1110/400'
+        },
+      }
     },
-    image: {
-      original: {
-        location: 'https://picsum.photos/1110/400'
-      },
-      '1x': {
-        location: 'https://picsum.photos/1110/400'
-      },
-      '2x': {
-        location: 'https://picsum.photos/1110/400'
-      },
-      '3x': {
-        location: 'https://picsum.photos/1110/400'
-      },
-    }
   }
 }
 
