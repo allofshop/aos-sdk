@@ -232,31 +232,39 @@ export async function genOrderCheckout() {
 
 export async function genReviewDetail() {
   return {
-    id: v4(),
-    content: 'adsflajsdlkfjasdl',
-    score: 4.5,
-    createdAt: new Date(),
-    orderItem: {
+    data: {
       id: v4(),
-      code: v4(),
-      quantity: getRandomNumber(10),
-      review: undefined,
-      product: {
-        id: v4(),
-        name: '상품',
-        price: 123,
-        // option
-      },
-      // variant?: ProductVariantJson;
-      deliveryItem: v4(),
-      customerServiceItem: v4(),
-      discounts: [],
-      coupons: [],
-      mileages: [],
-      status: 'DRAFT',
-      stats: {},
+      content: 'adsflajsdlkfjasdl',
+      score: 4.5,
       createdAt: new Date(),
-    },
+      images: [
+        await _genImageFile(),
+        await _genImageFile(),
+        await _genImageFile(),
+        await _genImageFile(),
+      ],
+      orderItem: {
+        id: v4(),
+        code: v4(),
+        quantity: getRandomNumber(10),
+        review: undefined,
+        product: {
+          id: v4(),
+          name: '상품',
+          price: 123,
+          // option
+        },
+        // variant?: ProductVariantJson;
+        deliveryItem: v4(),
+        customerServiceItem: v4(),
+        discounts: [],
+        coupons: [],
+        mileages: [],
+        status: 'DRAFT',
+        stats: {},
+        createdAt: new Date(),
+      },
+    }
   };
 }
 
@@ -412,6 +420,12 @@ async function genReviewItem() {
     id: v4(),
     content: 'content content content content sample',
     score: 3.4,
+    images: [
+      await _genImageFile(),
+      await _genImageFile(),
+      await _genImageFile(),
+      await _genImageFile(),
+    ],
     createdAt: new Date(),
   };
 }
@@ -629,4 +643,12 @@ export async function genBanners(sectionName?: string) {
       totalPages: 1,
     }
   };
+}
+
+export async function genReputation() {
+  return {
+    data: {
+      score: getRandomNumber(1000),
+    }
+  }
 }
