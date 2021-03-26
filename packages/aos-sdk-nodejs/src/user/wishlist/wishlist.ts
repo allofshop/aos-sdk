@@ -51,7 +51,7 @@ export async function addUserDefaultWishlistProduct(
   });
 }
 
-export async function getUserWistlists(query: FindWishlistsDto) {
+export async function getUserWishlists(query: FindWishlistsDto) {
   const findWishlistsValidator: FindWishlistsValidator = new FindWishlistsValidator();
   findWishlistsValidator.validate(query, 'query');
 
