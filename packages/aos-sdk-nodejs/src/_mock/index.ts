@@ -769,12 +769,17 @@ export async function genUserDeliveryAddressList() {
   }
 }
 
-async function _genCouponListItem() {
+async function _genCouponListItem(benefit: any) {
   return {
     id: v4(),
     code: v4(),
     coupon: {
       name: '상품 적용 쿠폰!',
+      benefit,
+    },
+    availableDate: {
+      minimum: new Date(2021, 1, 2),
+      maximum: new Date(2021, 12, 31),
     }
   };
 }
@@ -783,10 +788,19 @@ export async function genUserCouponList() {
   return {
     data: {
       items: [
-        await _genCouponListItem(),
-        await _genCouponListItem(),
-        await _genCouponListItem(),
-        await _genCouponListItem(),
+        await _genCouponListItem({
+          subType: 'ABSOLUTE',
+          value: 4000,
+        }),
+        await _genCouponListItem({
+          subType: 'RATIO',
+          value: 40,
+          maximum: 50000,
+        }),
+        await _genCouponListItem({
+          subType: 'RATIO',
+          value: 50,
+        }),
       ],
       currentItemCount: 4,
       itemsPerPage: 20,
