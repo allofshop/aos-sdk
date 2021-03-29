@@ -346,12 +346,11 @@ export async function _genOrderItem() {
     id: v4(),
     code: v4(),
     status: OrderItemStatus.DELIVERY_PROCESSING,
+    quantity: getRandomNumber(5),
     product: {
       name: '상품이름',
       price: getRandomNumber(10000),
       code: v4(),
-      quantity: getRandomNumber(10),
-      status: 'COMPLETED',
     },
     stats: {
       mileagePoint: getRandomNumber(100000),
