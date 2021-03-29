@@ -5,6 +5,9 @@
 import { sign } from 'jsonwebtoken';
 import { v4 } from 'uuid';
 
+import { OrderItemStatus } from '~/sales/order/vo';
+import { OrderStatus } from '~/user/order/vo';
+
 async function _genImageFile() {
   return {
     original: {
@@ -292,7 +295,7 @@ export async function genReviewList() {
 
 async function _genOrder() {
   return {
-    status: 'DRAFT',
+    status: OrderStatus.ORDER_PROCESSING,
     type: 'ORDER',
     code: v4(),
     id: v4(),
@@ -342,6 +345,7 @@ export async function _genOrderItem() {
   return {
     id: v4(),
     code: v4(),
+    status: OrderItemStatus.DELIVERY_PROCESSING,
     product: {
       name: '상품이름',
       price: getRandomNumber(10000),
