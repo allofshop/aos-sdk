@@ -8,3 +8,4 @@ export * from './role';
 export * from './subscription';
 export * from './user';
 export * from './wishlist';
+export * from './orderItem';

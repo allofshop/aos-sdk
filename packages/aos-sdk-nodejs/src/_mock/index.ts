@@ -341,7 +341,7 @@ export async function genOrder() {
   };
 }
 
-export async function _genOrderItem() {
+async function _genOrderItem() {
   return {
     id: v4(),
     code: v4(),
@@ -361,6 +361,12 @@ export async function _genOrderItem() {
       priceBeforeTax: getRandomNumber(100000),
       taxPrice: getRandomNumber(100000),
     }
+  }
+}
+
+export async function genOrderItem() {
+  return {
+    data: _genOrderItem()
   }
 }
 
