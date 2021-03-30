@@ -77,7 +77,7 @@ export async function genCategoryList(): Promise<any> {
       pageIndex: 0,
       startIndex: 0,
       totalItems: 5,
-      totalPages: 10,
+      totalPages: 1,
       items: [await genCategoryListItem()],
     },
   };
@@ -124,7 +124,7 @@ export async function genProductList() {
       pageIndex: 0,
       startIndex: 0,
       totalItems: 5,
-      totalPages: 10,
+      totalPages: 1,
     },
   };
 }
@@ -288,7 +288,7 @@ export async function genReviewList() {
       pageIndex: 0,
       startIndex: 0,
       totalItems: 5,
-      totalPages: 10,
+      totalPages: 1,
     },
   };
 }
