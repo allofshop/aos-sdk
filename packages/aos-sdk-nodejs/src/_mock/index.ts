@@ -304,7 +304,7 @@ async function _genOrder() {
       name: '정지승',
       mainPhoneNumber: '01030801376',
       address: {
-        zipcode: '03455',
+        zipCode: '03455',
         address1: '서울특별시 은평구 응알모 261',
         address2: '3층',
       }
@@ -386,7 +386,7 @@ export async function _genOrderListItem() {
       name: '정지승',
       mainPhoneNumber: '01030801376',
       address: {
-        zipcode: '03455',
+        zipCode: '03455',
         address1: '서울특별시 은평구 응알모 261',
         address2: '3층',
       }
@@ -741,7 +741,7 @@ async function _genUserDeliveryAddress(isDefault: boolean) {
     name: '우리집',
     recipientName: 'david',
     address: {
-      zipcode: '03455',
+      zipCode: '03455',
       address1: '서울특별시 은평구 응알모 261',
       address2: '3층',
     },
