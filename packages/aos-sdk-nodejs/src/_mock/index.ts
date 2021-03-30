@@ -568,6 +568,400 @@ export async function getOrderList() {
   };
 }
 
+export async function getRealOrderDetail() {
+  return {
+    data: {
+      "id": "602107e938f5c68a4306a516",
+      "createdAt": "2021-02-08T09:44:09.481Z",
+      "updatedAt": "2021-02-08T09:44:21.064Z",
+      "deliveries": [
+        {
+          "id": "602107e938f5c68a4306a51b",
+          "createdAt": "2021-02-08T09:44:09.350Z",
+          "updatedAt": "2021-02-08T09:44:21.000Z",
+          "order": "602107e938f5c68a4306a516",
+          "code": "2021100000000",
+          "status": "PREPARING",
+          "items": [
+            {
+              "id": "602107e938f5c68a4306a51e",
+              "createdAt": "2021-02-08T09:44:09.400Z",
+              "updatedAt": "2021-02-08T09:44:09.400Z",
+              "status": "PREPARING",
+              "delivery": "602107e938f5c68a4306a51b",
+              "orderItemId": "602107e938f5c68a4306a51d"
+            }
+          ],
+          "carrier": {
+            "id": "5fbb38e6c9515b0eef4c5b7d",
+            "createdAt": "2020-11-23T04:21:58.199Z",
+            "updatedAt": "2020-11-23T04:21:58.199Z",
+            "name": "기본 배송",
+            "description": "자동생성",
+            "type": "LOGISTICS-SERVICE",
+            "priceType": "FIXED",
+            "prices": [
+              {
+                "id": "5fbb38e6c9515b0eef4c5b7e",
+                "createdAt": "2020-11-23T04:21:58.199Z",
+                "updatedAt": "2020-11-23T04:21:58.199Z",
+                "minimum": 0,
+                "maximum": 50000,
+                "value": 3000
+              }
+            ],
+            "extraCharges": []
+          },
+          "recipient": {
+            "name": "수령자면",
+            "homePhone": "0282918282"
+          },
+          "address": {
+            "zipCode": "06037",
+            "locality": "서울",
+            "basic": "도산대로17길 4, 5층",
+            "country": "대한민국"
+          },
+          "stats": {
+            "price": 3000,
+            "priceBeforeTax": 2727,
+            "taxPrice": 273,
+            "priceBeforeDiscount": 3000,
+            "discountPrice": 0,
+            "couponPrice": 0,
+            "areaPrice": 0
+          }
+        }
+      ],
+      "payments": [
+        {
+          "id": "602107f538f5c68a4306a533",
+          "createdAt": "2021-02-08T09:44:21.051Z",
+          "updatedAt": "2021-02-08T09:44:21.051Z",
+          "order": "602107e938f5c68a4306a516",
+          "items": [],
+          "status": "BEFORE-DEPOSIT",
+          "type": "DEPOSIT",
+          "stats": {
+            "refundPrice": 0,
+            "paymentPrice": 13000,
+            "totalPrice": 13000
+          },
+          "deposit": {
+            "account": {
+              "number": "111-1111-1111"
+            },
+            "depositor": "지승"
+          }
+        }
+      ],
+      "status": "PAYMENT-PROCESSING",
+      "type": "NORMAL",
+      "code": "2021100000000",
+      "orderer": {
+        "name": "주문자명",
+        "ip": "::ffff:127.0.0.1",
+        "email": "email@email.email",
+        "user": "602107b038f5c68a4306a4e6"
+      },
+      recipient: {
+        name: '정지승',
+        mainPhoneNumber: '01030801376',
+        address: {
+          zipCode: '03455',
+          address1: '서울특별시 은평구 응알모 261',
+          address2: '3층',
+        }
+      },
+      "items": [
+        {
+          "id": "602107e938f5c68a4306a51d",
+          "createdAt": "2021-02-08T09:44:09.460Z",
+          "updatedAt": "2021-02-09T01:52:19.295Z",
+          "review": "6021ead3af92d9e094ab5266",
+          "code": "2021100000000-000",
+          "quantity": 2,
+          "product": {
+            "id": "6001589e1ed7396cfc05b354",
+            "name": "옵션이 있는 상품",
+            "code": "00002021",
+            "taxPrice": 455,
+            "priceBeforeTax": 4545,
+            "price": 5000,
+            "taxRatio": 10,
+            "delivery": {
+              "range": "DOMESTIC",
+              "separated": false,
+              "carriers": [],
+              "weight": 1,
+              "hsCodes": [],
+              "type": "DIRECT"
+            },
+            "categories": []
+          },
+          "deliveryItem": "602107e938f5c68a4306a51e",
+          "discounts": [],
+          "coupons": [],
+          "mileages": [],
+          "stats": {
+            "product": {
+              "basic": {
+                "price": 10000,
+                "priceBeforeTax": 9091,
+                "taxPrice": 909,
+                "priceBeforeDiscount": 10000,
+                "discountPrice": 0,
+                "couponPrice": 0,
+                "mileagePoint": 0
+              }
+            },
+            "mileagePoint": 0,
+            "discountPrice": 0,
+            "couponPrice": 0,
+            "price": 10000,
+            "priceBeforeDiscount": 10000,
+            "priceBeforeTax": 9091,
+            "taxPrice": 909
+          }
+        }
+      ],
+      "coupons": [],
+      "usingMileage": 0,
+      "stats": {
+        "product": {
+          "price": 10000,
+          "priceBeforeTax": 9091,
+          "taxPrice": 909,
+          "priceBeforeDiscount": 10000,
+          "discountPrice": 0,
+          "couponPrice": 0,
+          "mileagePoint": 0
+        },
+        "delivery": {
+          "areaPrice": 0,
+          "price": 3000,
+          "priceBeforeTax": 2727,
+          "taxPrice": 273,
+          "priceBeforeDiscount": 3000,
+          "discountPrice": 0,
+          "couponPrice": 0
+        },
+        "mileagePoint": 0,
+        "discountPrice": 0,
+        "couponPrice": 0,
+        "orderItemCouponPrice": 0,
+        "paymentPrice": 13000,
+        "price": 13000,
+        "priceBeforeDiscount": 13000,
+        "priceBeforeTax": 11818,
+        "taxPrice": 1182
+      }
+    }
+  }
+}
+
+export async function getRealOrderList() {
+  return {
+    data: {
+      "currentItemCount": 1,
+      "itemsPerPage": 20,
+      "startIndex": 0,
+      "pageIndex": 0,
+      "totalItems": 1,
+      "totalPages": 1,
+      "items": [
+        {
+          "id": "602107e938f5c68a4306a516",
+          "createdAt": "2021-02-08T09:44:09.481Z",
+          "updatedAt": "2021-02-08T09:44:21.064Z",
+          "deliveries": [
+            {
+              "id": "602107e938f5c68a4306a51b",
+              "createdAt": "2021-02-08T09:44:09.350Z",
+              "updatedAt": "2021-02-08T09:44:21.000Z",
+              "order": "602107e938f5c68a4306a516",
+              "code": "2021100000000",
+              "status": "PREPARING",
+              "items": [
+                {
+                  "id": "602107e938f5c68a4306a51e",
+                  "createdAt": "2021-02-08T09:44:09.400Z",
+                  "updatedAt": "2021-02-08T09:44:09.400Z",
+                  "status": "PREPARING",
+                  "delivery": "602107e938f5c68a4306a51b",
+                  "orderItemId": "602107e938f5c68a4306a51d"
+                }
+              ],
+              "carrier": {
+                "id": "5fbb38e6c9515b0eef4c5b7d",
+                "createdAt": "2020-11-23T04:21:58.199Z",
+                "updatedAt": "2020-11-23T04:21:58.199Z",
+                "name": "기본 배송",
+                "description": "자동생성",
+                "type": "LOGISTICS-SERVICE",
+                "priceType": "FIXED",
+                "prices": [
+                  {
+                    "id": "5fbb38e6c9515b0eef4c5b7e",
+                    "createdAt": "2020-11-23T04:21:58.199Z",
+                    "updatedAt": "2020-11-23T04:21:58.199Z",
+                    "minimum": 0,
+                    "maximum": 50000,
+                    "value": 3000
+                  }
+                ],
+                "extraCharges": []
+              },
+              "recipient": {
+                "name": "수령자면",
+                "homePhone": "0282918282"
+              },
+              "address": {
+                "zipCode": "06037",
+                "locality": "서울",
+                "basic": "도산대로17길 4, 5층",
+                "country": "대한민국"
+              },
+              "stats": {
+                "price": 3000,
+                "priceBeforeTax": 2727,
+                "taxPrice": 273,
+                "priceBeforeDiscount": 3000,
+                "discountPrice": 0,
+                "couponPrice": 0,
+                "areaPrice": 0
+              }
+            }
+          ],
+          "payments": [
+            {
+              "id": "602107f538f5c68a4306a533",
+              "createdAt": "2021-02-08T09:44:21.051Z",
+              "updatedAt": "2021-02-08T09:44:21.051Z",
+              "order": "602107e938f5c68a4306a516",
+              "items": [],
+              "status": "BEFORE-DEPOSIT",
+              "type": "DEPOSIT",
+              "stats": {
+                "refundPrice": 0,
+                "paymentPrice": 13000,
+                "totalPrice": 13000
+              },
+              "deposit": {
+                "account": {
+                  "number": "111-1111-1111"
+                },
+                "depositor": "지승"
+              }
+            }
+          ],
+          "status": "PAYMENT-PROCESSING",
+          "type": "NORMAL",
+          "code": "2021100000000",
+          "orderer": {
+            "name": "주문자명",
+            "ip": "::ffff:127.0.0.1",
+            "email": "email@email.email",
+            "user": "602107b038f5c68a4306a4e6"
+          },
+          recipient: {
+            name: '정지승',
+            mainPhoneNumber: '01030801376',
+            address: {
+              zipCode: '03455',
+              address1: '서울특별시 은평구 응알모 261',
+              address2: '3층',
+            }
+          },
+          "items": [
+            {
+              "id": "602107e938f5c68a4306a51d",
+              "createdAt": "2021-02-08T09:44:09.460Z",
+              "updatedAt": "2021-02-09T01:52:19.295Z",
+              "review": "6021ead3af92d9e094ab5266",
+              "code": "2021100000000-000",
+              "quantity": 2,
+              "product": {
+                "id": "6001589e1ed7396cfc05b354",
+                "name": "옵션이 있는 상품",
+                "code": "00002021",
+                "taxPrice": 455,
+                "priceBeforeTax": 4545,
+                "price": 5000,
+                "taxRatio": 10,
+                "delivery": {
+                  "range": "DOMESTIC",
+                  "separated": false,
+                  "carriers": [],
+                  "weight": 1,
+                  "hsCodes": [],
+                  "type": "DIRECT"
+                },
+                "categories": []
+              },
+              "deliveryItem": "602107e938f5c68a4306a51e",
+              "discounts": [],
+              "coupons": [],
+              "mileages": [],
+              "stats": {
+                "product": {
+                  "basic": {
+                    "price": 10000,
+                    "priceBeforeTax": 9091,
+                    "taxPrice": 909,
+                    "priceBeforeDiscount": 10000,
+                    "discountPrice": 0,
+                    "couponPrice": 0,
+                    "mileagePoint": 0
+                  }
+                },
+                "mileagePoint": 0,
+                "discountPrice": 0,
+                "couponPrice": 0,
+                "price": 10000,
+                "priceBeforeDiscount": 10000,
+                "priceBeforeTax": 9091,
+                "taxPrice": 909
+              }
+            }
+          ],
+          "coupons": [],
+          "usingMileage": 0,
+          "stats": {
+            "product": {
+              "price": 10000,
+              "priceBeforeTax": 9091,
+              "taxPrice": 909,
+              "priceBeforeDiscount": 10000,
+              "discountPrice": 0,
+              "couponPrice": 0,
+              "mileagePoint": 0
+            },
+            "delivery": {
+              "areaPrice": 0,
+              "price": 3000,
+              "priceBeforeTax": 2727,
+              "taxPrice": 273,
+              "priceBeforeDiscount": 3000,
+              "discountPrice": 0,
+              "couponPrice": 0
+            },
+            "mileagePoint": 0,
+            "discountPrice": 0,
+            "couponPrice": 0,
+            "orderItemCouponPrice": 0,
+            "paymentPrice": 13000,
+            "price": 13000,
+            "priceBeforeDiscount": 13000,
+            "priceBeforeTax": 11818,
+            "taxPrice": 1182
+          }
+        }
+      ]
+    }
+  };
+}
+
 async function genReviewItem() {
   return {
     id: v4(),

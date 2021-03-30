@@ -1,6 +1,6 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
-import { genOrder, getOrderList } from '~/_mock';
+import { genOrder, getOrderList, getRealOrderDetail, getRealOrderList } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
@@ -14,7 +14,7 @@ export async function getUserOrder(orderId: string) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /users/me/orders/${orderId}`);
-    return await genOrder();
+    return await getRealOrderDetail();
   }
 
   return await lite.request('GET', `users/me/orders/${orderId}`);
@@ -26,7 +26,7 @@ export async function getUserOrders(query: FindOrdersDto) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: /users/me/orders`);
-    return await getOrderList();
+    return await getRealOrderList();
   }
 
   return await lite.request('GET', `users/me/orders`, { query });
