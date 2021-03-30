@@ -140,12 +140,8 @@ async function _genProductDetail() {
       items: [
         await genProductOptionItem(),
         await genProductOptionItem(),
-        await genProductOptionItem(),
-        await genProductOptionItem(),
       ],
       variants: [
-        await genProductVariant(),
-        await genProductVariant(),
         await genProductVariant(),
         await genProductVariant(),
         await genProductVariant(),
@@ -164,7 +160,151 @@ async function _genProductDetail() {
 
 export async function genProductDetail() {
   return {
-    data: await _genProductDetail(),
+    data: {
+      "id": "6001589e1ed7396cfc05b354",
+      "createdAt": "2021-01-15T08:55:58.305Z",
+      "updatedAt": "2021-03-10T01:12:01.943Z",
+      "displayable": true,
+      "displayedAt": "2021-01-15T08:55:58.110Z",
+      "sellable": true,
+      "categories": [],
+      "name": "옵션이 있는 상품",
+      "code": "00002021",
+      "quality": "NEW",
+      "tags": [],
+      "grossPrice": 5000,
+      "taxType": "TAX",
+      "taxRatio": 10,
+      "taxPrice": 455,
+      "priceBeforeTax": 4545,
+      "price": 5000,
+      "orderQuantity": {
+        "type": "ITEM",
+        "minimum": 1
+      },
+      "useAdultAuthentication": false,
+      "option": {
+        "type": "COMBINE",
+        "items": [
+          {
+            "shopId": "5fbb38e6c9515b0eef4c5b78",
+            "id": "602ba2a95d282666240f8d3e",
+            "name": "색상",
+            "values": [
+              {
+                "id": "602ba2a95d282666240f8d3f",
+                "productOption": "602ba2a95d282666240f8d3e",
+                "value": "노랑"
+              },
+              {
+                "id": "602ba2a95d282666240f8d40",
+                "productOption": "602ba2a95d282666240f8d3e",
+                "value": "빨강"
+              }
+            ],
+            "renderingStyle": "SELECT-BOX",
+            "required": true
+          },
+          {
+            "shopId": "5fbb38e6c9515b0eef4c5b78",
+            "id": "602ba2a95d282666240f8d41",
+            "name": "사이즈",
+            "values": [
+              {
+                "id": "602ba2a95d282666240f8d42",
+                "productOption": "602ba2a95d282666240f8d41",
+                "value": "S"
+              },
+              {
+                "id": "602ba2a95d282666240f8d43",
+                "productOption": "602ba2a95d282666240f8d41",
+                "value": "L"
+              }
+            ],
+            "renderingStyle": "SELECT-BOX",
+            "required": true
+          },
+          {
+            "shopId": "5fbb38e6c9515b0eef4c5b78",
+            "id": "602ba2a95d282666240f8d44",
+            "name": "모양",
+            "values": [
+              {
+                "id": "602ba2a95d282666240f8d45",
+                "productOption": "602ba2a95d282666240f8d44",
+                "value": "별"
+              },
+              {
+                "id": "602ba2a95d282666240f8d46",
+                "productOption": "602ba2a95d282666240f8d44",
+                "value": "달"
+              },
+              {
+                "id": "602ba2a95d282666240f8d47",
+                "productOption": "602ba2a95d282666240f8d44",
+                "value": "해"
+              }
+            ],
+            "renderingStyle": "SELECT-BOX",
+            "required": true
+          }
+        ],
+        "variants": [
+          {
+            "id": "602ba2a95d282666240f8d48",
+            "optionValues": [
+              "602ba2a95d282666240f8d3f",
+              "602ba2a95d282666240f8d42",
+              "602ba2a95d282666240f8d45"
+            ],
+            "product": "6001589e1ed7396cfc05b354",
+            "name": "노랑/S/별",
+            "code": "00002021-002",
+            "stockManagement": {
+              "grade": "MIDDLE",
+              "quantityCheckTrigger": "ORDER",
+              "stock": 1000,
+              "safetyStock": 0
+            },
+            "displayable": true,
+            "sellable": true,
+            "additionalPrice": 0,
+            "additionalPriceBeforeTax": 0,
+            "additionalTaxPrice": 0
+          }
+        ],
+        "extras": []
+      },
+      "featuredImages": [],
+      "images": [],
+      "brand": null,
+      "manufacturer": "5fbb38e6c9515b0eef4c5c2b",
+      "supplier": "5fbb38e6c9515b0eef4c5c2c",
+      "delivery": {
+        "range": "DOMESTIC",
+        "separated": false,
+        "carriers": [],
+        "weight": 1,
+        "hsCodes": [],
+        "type": "DIRECT"
+      },
+      "bundleProducts": [],
+      "relativeProducts": [],
+      "stats": {
+        "orderCount": 0,
+        "reviewCount": 1,
+        "reviewAverageScore": 2
+      },
+      "wishlists": [
+        "defaults"
+      ],
+      "discountedPrice": 5000,
+      "discountPrice": 0,
+      "discounts": [],
+      "coupons": [],
+      "downloadableCoupons": [],
+      "deliveryPrice": 0
+    }
   };
 }
 
@@ -173,9 +313,6 @@ export async function genProductOptionItem() {
     id: v4(),
     name: '옵션명',
     values: [
-      await genProductOptionItemValue(),
-      await genProductOptionItemValue(),
-      await genProductOptionItemValue(),
       await genProductOptionItemValue(),
       await genProductOptionItemValue(),
     ],
