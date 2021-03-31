@@ -1,6 +1,6 @@
 {
   "name": "@allofshop/aos-sdk-nodejs",
-  "version": "1.0.0-alpha.38",
+  "version": "1.0.0-alpha.39",
   "description": "AOS SDK for NodeJS",
   "main": ".dist/index.js",
   "types": ".dist/src/index.d.ts",
@@ -56,7 +56,7 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
-    "@allofshop/aos-sdk-nodejs-lite": "^1.0.0-alpha.8",
+    "@allofshop/aos-sdk-nodejs-lite": "^1.0.0-alpha.9",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
