@@ -5,6 +5,7 @@ import * as Board from './board';
 import * as Catalog from './catalog';
 import * as Cms from './cms';
 import Config, { ConfigInterface } from './config';
+import * as Core from './core';
 import * as Promotion from './promotion';
 import * as Review from './review';
 import * as Sales from './sales';
@@ -15,6 +16,7 @@ export default {
   Board,
   Catalog,
   Cms,
+  Core,
   Promotion,
   Review,
   Sales,

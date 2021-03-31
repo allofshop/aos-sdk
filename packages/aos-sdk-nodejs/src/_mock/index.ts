@@ -1442,3 +1442,9 @@ export async function genCSList() {
     }
   }
 }
+
+export async function genFile() {
+  return {
+    data: _genImageFile(),
+  }
+}
