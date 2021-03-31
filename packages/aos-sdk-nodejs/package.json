@@ -1,6 +1,6 @@
 {
   "name": "@allofshop/aos-sdk-nodejs",
-  "version": "1.0.0-alpha.35",
+  "version": "1.0.0-alpha.36",
   "description": "AOS SDK for NodeJS",
   "main": ".dist/index.js",
   "types": ".dist/src/index.d.ts",
