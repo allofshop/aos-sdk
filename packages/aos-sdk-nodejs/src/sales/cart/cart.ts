@@ -21,7 +21,7 @@ export async function createCart(body: CreateDto) {
   const createValidator: CreateValidator = new CreateValidator();
   createValidator.validate(body, 'body');
 
-  return await lite.request('POST', `carts`, { body });
+  return await lite.request('POST', `carts`, { content: 'json' }, { body });
 }
 
 export async function addCartItem(cartId: string, body: CreateItemDto) {
@@ -36,7 +36,7 @@ export async function addCartItem(cartId: string, body: CreateItemDto) {
     return await genCartItem();
   }
 
-  return await lite.request('POST', `carts/${cartId}/items`, { body });
+  return await lite.request('POST', `carts/${cartId}/items`, { content: 'json' }, { body });
 }
 
 export async function addDefaultCartItem(body: CreateItemDto) {
@@ -48,7 +48,7 @@ export async function addDefaultCartItem(body: CreateItemDto) {
     return await genCartItem();
   }
 
-  return await lite.request('POST', `carts/default/items`, { body });
+  return await lite.request('POST', `carts/default/items`, { content: 'json' }, { body });
 }
 
 export async function getCart(cartId: string) {
@@ -60,7 +60,7 @@ export async function getCart(cartId: string) {
     return await genCartDetail();
   }
 
-  return await lite.request('GET', `carts/${cartId}`);
+  return await lite.request('GET', `carts/${cartId}`, { content: 'json' });
 }
 
 export async function getDefaultCart() {
@@ -68,7 +68,7 @@ export async function getDefaultCart() {
     console.log(`[DEVELOPMENT]: /carts/default`);
     return await genCartDetail();
   }
-  return await lite.request('GET', `carts/default`);
+  return await lite.request('GET', `carts/default`, { content: 'json' });
 }
 
 export async function updateCartItem(
@@ -88,7 +88,7 @@ export async function updateCartItem(
     return await genCartItem();
   }
 
-  return await lite.request('PATCH', `carts/${cartId}/items/${cartItemId}`, {
+  return await lite.request('PATCH', `carts/${cartId}/items/${cartItemId}`, { content: 'json' }, {
     body,
   });
 }
@@ -108,7 +108,7 @@ export async function updateDefaultCartItem(
     return await genCartItem();
   }
 
-  return await lite.request('PATCH', `carts/default/items/${cartItemId}`, {
+  return await lite.request('PATCH', `carts/default/items/${cartItemId}`, { content: 'json' }, {
     body,
   });
 }
@@ -139,7 +139,7 @@ export async function deleteDefaultCartItem(cartItemId: string) {
     }
   }
 
-  return await lite.request('DELETE', `carts/default/items/${cartItemId}`);
+  return await lite.request('DELETE', `carts/default/items/${cartItemId}`, { content: 'json' });
 }
 
 export async function deleteCartItems(cartId: string) {
@@ -178,7 +178,7 @@ export async function deleteCart(cartId: string) {
     }
   }
 
-  return await lite.request('DELETE', `carts/${cartId}`);
+  return await lite.request('DELETE', `carts/${cartId}`, { content: 'json' });
 }
 
 export async function checkoutCart(
@@ -196,7 +196,7 @@ export async function checkoutCart(
     return await genOrder();
   }
 
-  return await lite.request('POST', `carts/${cartId}/checkout`, { body });
+  return await lite.request('POST', `carts/${cartId}/checkout`, { content: 'json' }, { body });
 }
 
 export async function checkoutDefaultCart(body: CheckoutOneByIdDto) {
@@ -208,5 +208,5 @@ export async function checkoutDefaultCart(body: CheckoutOneByIdDto) {
     return await genOrder();
   }
 
-  return await lite.request('POST', `carts/default/checkout`, { body });
+  return await lite.request('POST', `carts/default/checkout`, { content: 'json' }, { body });
 }

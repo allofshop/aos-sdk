@@ -24,7 +24,7 @@ export async function getCategoryTree(query: FindTreeDto) {
     return await genCategoryList();
   }
 
-  return await lite.request('GET', `categories/tree`, { query });
+  return await lite.request('GET', `categories/tree`, { content: 'json' }, { query });
 }
 
 export async function getCategories(query: FindDto) {
@@ -36,5 +36,5 @@ export async function getCategories(query: FindDto) {
     return await genCategoryList();
   }
 
-  return await lite.request('GET', `categories`, { query });
+  return await lite.request('GET', `categories`, { content: 'json' }, { query });
 }

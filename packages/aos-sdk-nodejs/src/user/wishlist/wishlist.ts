@@ -26,7 +26,7 @@ export async function createUserWishlist(body: CreateWishlistDto) {
     return {};
   }
 
-  return await lite.request('POST', `users/me/wishlists`, { body });
+  return await lite.request('POST', `users/me/wishlists`, { content: 'json' }, { body });
 }
 
 export async function addUserWishlistProduct(
@@ -47,6 +47,7 @@ export async function addUserWishlistProduct(
   return await lite.request(
     'POST',
     `users/me/wishlists/${wishlistId}/products`,
+    { content: 'json' },
     {
       body,
     }
@@ -64,7 +65,7 @@ export async function addUserDefaultWishlistProduct(
     return {};
   }
 
-  return await lite.request('POST', `users/me/wishlists/default/products`, {
+  return await lite.request('POST', `users/me/wishlists/default/products`, { content: 'json' }, {
     body,
   });
 }
@@ -78,7 +79,7 @@ export async function getUserWishlists(query: FindWishlistsDto) {
     return {};
   }
 
-  return await lite.request('GET', `users/me/wishlists`, { query });
+  return await lite.request('GET', `users/me/wishlists`, { content: 'json' }, { query });
 }
 
 export async function getUserWishlist(wishlistId: string) {
@@ -117,7 +118,7 @@ export async function updateUserWishlist(
     return await genWishlist();
   }
 
-  return await lite.request('PATCH', `users/me/wishlists/${wishlistId}`, {
+  return await lite.request('PATCH', `users/me/wishlists/${wishlistId}`, { content: 'json' }, {
     body,
   });
 }
@@ -131,7 +132,7 @@ export async function updateUserDefaultWishlist(body: UpdateWishlistByIdDto) {
     return {};
   }
 
-  return await lite.request('PATCH', `users/me/wishlists/default`, { body });
+  return await lite.request('PATCH', `users/me/wishlists/default`, { content: 'json' }, { body });
 }
 
 export async function deleteUserWishlist(wishlistId: string) {
@@ -165,7 +166,8 @@ export async function deleteUserWishlistProduct(
 
   return await lite.request(
     'DELETE',
-    `users/me/wishlists/${wishlistId}/products/${productId}`
+    `users/me/wishlists/${wishlistId}/products/${productId}`,
+    { content: 'json' },
   );
 }
 
@@ -177,7 +179,7 @@ export async function deleteUserDefaultWishlist() {
     };
   }
 
-  return await lite.request('DELETE', `users/me/wishlists/default`);
+  return await lite.request('DELETE', `users/me/wishlists/default`, { content: 'json' });
 }
 
 export async function deleteUserDefaultWishlistProduct(productId: string) {
@@ -193,6 +195,7 @@ export async function deleteUserDefaultWishlistProduct(productId: string) {
 
   return await lite.request(
     'DELETE',
-    `users/me/wishlists/default/products/${productId}`
+    `users/me/wishlists/default/products/${productId}`,
+    { content: 'json' },
   );
 }

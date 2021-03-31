@@ -9,5 +9,5 @@ export async function getUserRoles(query: any) {
     return {};
   }
 
-  return await lite.request('GET', `users/me/roles`, { query });
+  return await lite.request('GET', `users/me/roles`, { content: 'json' }, { query });
 }

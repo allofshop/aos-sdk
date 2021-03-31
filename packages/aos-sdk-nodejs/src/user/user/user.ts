@@ -32,7 +32,7 @@ export async function updateUser(body: UpdateUserDto) {
     return await genUser();
   }
 
-  return await lite.request('PATCH', `users/me`, { body });
+  return await lite.request('PATCH', `users/me`, { content: 'json' }, { body });
 }
 
 export async function deleteUser() {
@@ -56,7 +56,7 @@ export async function updatePassword(body: UpdatePasswordDto) {
     };
   }
 
-  return await lite.request('POST', `users/me/changePassword`, { body });
+  return await lite.request('POST', `users/me/changePassword`, { content: 'json' }, { body });
 }
 
 export async function getReviewWriteableOrderItems(
@@ -73,6 +73,7 @@ export async function getReviewWriteableOrderItems(
   return await lite.request(
     'GET',
     `users/me/orderItems/getReviewWriteableList`,
+    { content: 'json' },
     {
       query,
     }

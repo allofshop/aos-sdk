@@ -16,7 +16,7 @@ export async function getCoupon(query: FindOneByInputDto) {
     return {};
   }
 
-  return await lite.request('GET', 'coupons', { query });
+  return await lite.request('GET', 'coupons', { content: 'json' }, { query });
 }
 
 export async function issueCouponByInput(body: IssueOneByInputDto) {
@@ -28,7 +28,7 @@ export async function issueCouponByInput(body: IssueOneByInputDto) {
     return {};
   }
 
-  return await lite.request('POST', 'coupons', { body });
+  return await lite.request('POST', 'coupons', { content: 'json' }, { body });
 }
 
 export async function issueCouponByDownload(counponId: string) {
@@ -40,5 +40,5 @@ export async function issueCouponByDownload(counponId: string) {
     return {};
   }
 
-  return await lite.request('POST', `coupons/${counponId}/issue`);
+  return await lite.request('POST', `coupons/${counponId}/issue`, { content: 'json' });
 }

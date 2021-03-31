@@ -4,7 +4,6 @@ import { genUserDeliveryAddress, genUserDeliveryAddressList } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
-
 import {
   CreateDeliveryAddressDto,
   FindDeliveryAdressesDto,
@@ -27,7 +26,7 @@ export async function createUserDeliveryAddress(
     return await genUserDeliveryAddress();
   }
 
-  return await lite.request('POST', `users/me/deliveryAddresses`, { body });
+  return await lite.request('POST', `users/me/deliveryAddresses`, { content: 'json' }, { body });
 }
 
 export async function getDefaultUserDeliveryAddress() {
@@ -45,7 +44,7 @@ export async function getUserDeliveryAddress(deliveryAddressId: string) {
     return await genUserDeliveryAddress();
   }
 
-  return await lite.request('GET', `users/me/deliveryAddresses/${deliveryAddressId}`);
+  return await lite.request('GET', `users/me/deliveryAddresses/${deliveryAddressId}`, { content: 'json' });
 }
 
 export async function updateUserDeliveryAddress(
@@ -66,6 +65,7 @@ export async function updateUserDeliveryAddress(
   return await lite.request(
     'PATCH',
     `users/me/deliveryAddresses/${deliveryAddressId}`,
+    { content: 'json' },
     { body }
   );
 }
@@ -83,7 +83,8 @@ export async function deleteUserDeliveryAddress(deliveryAddressId: string) {
 
   return await lite.request(
     'DELETE',
-    `users/me/deliveryAddresses/${deliveryAddressId}`
+    `users/me/deliveryAddresses/${deliveryAddressId}`,
+    { content: 'json' },
   );
 }
 
@@ -96,5 +97,5 @@ export async function getUserDeliveryAddresses(query: FindDeliveryAdressesDto) {
     return await genUserDeliveryAddressList();
   }
 
-  return await lite.request('GET', `users/me/deliveryAddresses`, { query });
+  return await lite.request('GET', `users/me/deliveryAddresses`, { content: 'json' }, { query });
 }

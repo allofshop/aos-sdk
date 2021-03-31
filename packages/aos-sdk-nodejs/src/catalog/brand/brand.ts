@@ -28,5 +28,5 @@ export async function getBrands(query: FindDto) {
     return {};
   }
 
-  return await lite.request('GET', 'brands', { query });
+  return await lite.request('GET', 'brands', { content: 'json' }, { query });
 }

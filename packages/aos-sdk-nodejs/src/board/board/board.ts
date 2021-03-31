@@ -16,7 +16,7 @@ export async function getBoard(boardId: string) {
     return {};
   }
 
-  return await lite.request('GET', `boards/${boardId}`);
+  return await lite.request('GET', `boards/${boardId}`, { content: 'json' });
 }
 
 export async function getBoards(query: FindDto) {
@@ -28,5 +28,5 @@ export async function getBoards(query: FindDto) {
     return {};
   }
 
-  return await lite.request('GET', 'boards', { query });
+  return await lite.request('GET', 'boards', { content: 'json' }, { query });
 }

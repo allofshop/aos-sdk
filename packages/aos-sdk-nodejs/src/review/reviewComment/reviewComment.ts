@@ -19,7 +19,7 @@ export async function createReviewComment(reviewId: string, body: CreateDto) {
     return {};
   }
 
-  return await lite.request('POST', `reviews/${reviewId}/comments`, { body });
+  return await lite.request('POST', `reviews/${reviewId}/comments`, { content: 'json' }, { body });
 }
 
 export async function getReviewComment(reviewId: string, commentId: string) {
@@ -55,6 +55,7 @@ export async function updateReviewComment(
   return await lite.request(
     'PATCH',
     `reviews/${reviewId}/comments/${commentId}`,
+    { content: 'json' },
     {
       body,
     }
@@ -82,5 +83,5 @@ export async function getReviewComments(reviewId: string, query: any) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(reviewId, 'reviewId');
 
-  return await lite.request('GET', `reviews/${reviewId}/comments`, { query });
+  return await lite.request('GET', `reviews/${reviewId}/comments`, { content: 'json' }, { query });
 }

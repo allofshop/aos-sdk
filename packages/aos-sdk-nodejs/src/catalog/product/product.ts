@@ -17,7 +17,7 @@ export async function getProduct(productId: string) {
     return await genProductDetail();
   }
 
-  return await lite.request('GET', `products/${productId}`);
+  return await lite.request('GET', `products/${productId}`, { content: 'json' });
 }
 
 export async function getProducts(query: FindDto) {
@@ -29,5 +29,5 @@ export async function getProducts(query: FindDto) {
     return await genProductList();
   }
 
-  return await lite.request('GET', 'products', { query });
+  return await lite.request('GET', 'products', { content: 'json' }, { query });
 }

@@ -14,7 +14,7 @@ export async function getShowcase(slug: string) {
     return genShowcase(slug);
   }
 
-  return await lite.request('GET', `showcases/${slug}`);
+  return await lite.request('GET', `showcases/${slug}`, { content: 'json' });
 }
 
 // TODO: 서버에서 query Dto가 비어있음
@@ -23,5 +23,5 @@ export async function getShowcases(query: any) {
     console.log(`[DEVELOPMENT]: /showcases`);
     return genShowcases(query.slug);
   }
-  return await lite.request('GET', 'showcases', { query });
+  return await lite.request('GET', 'showcases', { content: 'json' }, { query });
 }

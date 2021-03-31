@@ -17,7 +17,7 @@ export async function getUserOrder(orderId: string) {
     return await getRealOrderDetail();
   }
 
-  return await lite.request('GET', `users/me/orders/${orderId}`);
+  return await lite.request('GET', `users/me/orders/${orderId}`, { content: 'json' });
 }
 
 export async function getUserOrders(query: FindOrdersDto) {
@@ -29,5 +29,5 @@ export async function getUserOrders(query: FindOrdersDto) {
     return await getRealOrderList();
   }
 
-  return await lite.request('GET', `users/me/orders`, { query });
+  return await lite.request('GET', `users/me/orders`, { content: 'json' }, { query });
 }

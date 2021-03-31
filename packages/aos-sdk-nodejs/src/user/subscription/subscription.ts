@@ -24,7 +24,7 @@ export async function createUserSubscription(body: CreateSubscriptionDto) {
     return {};
   }
 
-  return await lite.request('POST', `users/me/subscriptions`, { body });
+  return await lite.request('POST', `users/me/subscriptions`, { content: 'json' }, { body });
 }
 
 export async function getUserSubscription(subscriptionId: string) {
@@ -57,6 +57,7 @@ export async function updateUserSubscription(
   return await lite.request(
     'PATCH',
     `users/me/subscriptions/${subscriptionId}`,
+    { content: 'json' },
     {
       body,
     }
@@ -69,7 +70,8 @@ export async function deleteUserSubscription(subscriptionId: string) {
 
   return await lite.request(
     'DELETE',
-    `users/me/subscriptions/${subscriptionId}`
+    `users/me/subscriptions/${subscriptionId}`,
+    { content: 'json' },
   );
 }
 
@@ -77,5 +79,5 @@ export async function getUserSubscriptions(query: FindSubscriptionsDto) {
   const findSubscriptionsValidator: FindSubscriptionsValidator = new FindSubscriptionsValidator();
   findSubscriptionsValidator.validate(query, 'query');
 
-  return await lite.request('GET', `users/me/subscriptions`, { query });
+  return await lite.request('GET', `users/me/subscriptions`, { content: 'json' }, { query });
 }

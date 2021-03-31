@@ -15,5 +15,5 @@ export async function getUserMileages(query: FindMileagesDto) {
     return await genUserMileageList();
   }
 
-  return await lite.request('GET', `users/me/mileages`, { query });
+  return await lite.request('GET', `users/me/mileages`, { content: 'json' }, { query });
 }

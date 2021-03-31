@@ -29,7 +29,7 @@ export async function createOrder(body: CreateDto) {
     return await genOrder();
   }
 
-  return await lite.request('POST', `orders`, { body });
+  return await lite.request('POST', `orders`, { content: 'json' }, { body });
 }
 
 export async function getOrder(orderId: string) {
@@ -41,7 +41,7 @@ export async function getOrder(orderId: string) {
     return await genOrder();
   }
 
-  return await lite.request('GET', `orders/${orderId}`);
+  return await lite.request('GET', `orders/${orderId}`, { content: 'json' });
 }
 
 export async function updateOrder(orderId: string, body: UpdateOneByIdDto) {
@@ -56,7 +56,7 @@ export async function updateOrder(orderId: string, body: UpdateOneByIdDto) {
     return await genOrder();
   }
 
-  return await lite.request('PATCH', `orders/${orderId}`, { body });
+  return await lite.request('PATCH', `orders/${orderId}`, { content: 'json' }, { body });
 }
 
 export async function updateOrderItem(
@@ -79,6 +79,7 @@ export async function updateOrderItem(
   return await lite.request(
     'PATCH',
     `orders/${orderId}/orderItems/${orderItemId}`,
+    { content: 'json' },
     {
       body,
     }
@@ -99,7 +100,8 @@ export async function deleteOrderItem(orderId: string, orderItemId: string) {
 
   return await lite.request(
     'DELETE',
-    `orders/${orderId}/orderItems/${orderItemId}`
+    `orders/${orderId}/orderItems/${orderItemId}`,
+    { content: 'json' },
   );
 }
 
@@ -115,7 +117,7 @@ export async function checkoutOrder(orderId: string, body: CheckoutOneByIdDto) {
     return await genOrderCheckout();
   }
 
-  return await lite.request('POST', `orders/${orderId}/checkout`, { body });
+  return await lite.request('POST', `orders/${orderId}/checkout`, { content: 'json' }, { body });
 }
 
 export async function doneOrder(orderId: string, body: DoneByIdDto) {
@@ -130,5 +132,5 @@ export async function doneOrder(orderId: string, body: DoneByIdDto) {
     return await genOrder();
   }
 
-  return await lite.request('POST', `orders/${orderId}/done`, { body });
+  return await lite.request('POST', `orders/${orderId}/done`, { content: 'json' }, { body });
 }

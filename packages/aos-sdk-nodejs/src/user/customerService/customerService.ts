@@ -28,7 +28,7 @@ export async function createUserCustomerService(
     };
   }
 
-  return await lite.request('POST', `users/me/customerServices`, { body });
+  return await lite.request('POST', `users/me/customerServices`, { content: 'json' }, { body });
 }
 
 export async function getUserCustomerService(customerServiceId: string) {
@@ -62,7 +62,8 @@ export async function updateUserCustomerService(
   return await lite.request(
     'PATCH',
     `users/me/customerServices/${customerServiceId}`,
-    body
+    { content: 'json' },
+    { body }
   );
 }
 
@@ -77,7 +78,8 @@ export async function deleteUserCustomerService(customerServiceId: string) {
 
   return await lite.request(
     'DELETE',
-    `users/me/customerServices/${customerServiceId}`
+    `users/me/customerServices/${customerServiceId}`,
+    { content: 'json' },
   );
 }
 
@@ -90,7 +92,7 @@ export async function getUserCustomerServices(query: FindCustomerServicesDto) {
     return await genCSList();
   }
 
-  return await lite.request('GET', `users/me/customerServices`, { query });
+  return await lite.request('GET', `users/me/customerServices`, { content: 'json' }, { query });
 }
 
 export async function getUserCustomerServiceStats(
@@ -104,7 +106,9 @@ export async function getUserCustomerServiceStats(
     return {};
   }
 
-  return await lite.request('GET', `users/me/customerServices/getStats`, {
+  return await lite.request('GET', `users/me/customerServices/getStats`,
+  { content: 'json' },
+  {
     query,
   });
 }

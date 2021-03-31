@@ -13,5 +13,5 @@ export async function getUserOrderItem(orderItemId: string) {
     return await genOrderItem();
   }
 
-  return await lite.request('GET', `users/me/orderItems/${orderItemId}`);
+  return await lite.request('GET', `users/me/orderItems/${orderItemId}`, { content: 'json' });
 }

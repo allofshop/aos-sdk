@@ -12,7 +12,7 @@ export async function createUserCard(body: any) {
     return {};
   }
 
-  return await lite.request('POST', `users/me/cards`, { body });
+  return await lite.request('POST', `users/me/cards`, { content: 'json' }, { body });
 }
 
 export async function getUserCard(cardId: string) {
@@ -24,7 +24,7 @@ export async function getUserCard(cardId: string) {
     return {};
   }
 
-  return await lite.request('GET', `users/me/cards/${cardId}`);
+  return await lite.request('GET', `users/me/cards/${cardId}`, { content: 'json' });
 }
 
 export async function getDefaultUserCard() {
@@ -33,7 +33,7 @@ export async function getDefaultUserCard() {
     return {};
   }
 
-  return await lite.request('GET', `users/me/cards/default`);
+  return await lite.request('GET', `users/me/cards/default`, { content: 'json' });
 }
 
 export async function deleteUserCard(cardId: string) {
@@ -45,7 +45,7 @@ export async function deleteUserCard(cardId: string) {
     return {};
   }
 
-  return await lite.request('DELETE', `users/me/cards/${cardId}`);
+  return await lite.request('DELETE', `users/me/cards/${cardId}`, { content: 'json' });
 }
 
 // TODO: 서버 Dto가 정해져 있지 않습니다.
@@ -55,5 +55,5 @@ export async function getUserCards(query: any) {
     return {};
   }
 
-  return await lite.request('GET', `users/me/cards`, { query });
+  return await lite.request('GET', `users/me/cards`, { content: 'json' }, { query });
 }

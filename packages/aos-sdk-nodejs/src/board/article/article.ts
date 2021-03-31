@@ -27,7 +27,7 @@ export async function createArticle(body: CreateDto) {
     return await genArticleDetail();
   }
 
-  return await lite.request('POST', 'articles', { body });
+  return await lite.request('POST', 'articles', { content: 'json' }, { body });
 }
 
 export async function getArticle(articleId: string) {
@@ -39,7 +39,7 @@ export async function getArticle(articleId: string) {
     return await genArticleDetail();
   }
 
-  return await lite.request('GET', `articles/${articleId}`);
+  return await lite.request('GET', `articles/${articleId}`, { content: 'json' });
 }
 
 export async function updateArticle(articleId: string, body: UpdateOneByIdDto) {
@@ -54,7 +54,7 @@ export async function updateArticle(articleId: string, body: UpdateOneByIdDto) {
     return await genArticleDetail();
   }
 
-  return await lite.request('PATCH', `articles/${articleId}`, { body });
+  return await lite.request('PATCH', `articles/${articleId}`, { content: 'json' }, { body });
 }
 
 export async function deleteArticle(articleId: string) {
@@ -68,7 +68,7 @@ export async function deleteArticle(articleId: string) {
     };
   }
 
-  return await lite.request('DELETE', `articles/${articleId}`);
+  return await lite.request('DELETE', `articles/${articleId}`, { content: 'json' });
 }
 
 export async function getArticles(query: FindArticlesByBoardIdDto) {
@@ -80,7 +80,7 @@ export async function getArticles(query: FindArticlesByBoardIdDto) {
     return await genArticleList();
   }
 
-  return await lite.request('GET', 'articles', { query });
+  return await lite.request('GET', 'articles', { content: 'json' }, { query });
 }
 
 export async function voteArticle(articleId: string, body: VoteDto) {
@@ -95,7 +95,7 @@ export async function voteArticle(articleId: string, body: VoteDto) {
     return await genReputation();
   }
 
-  return await lite.request('POST', `articles/${articleId}/vote`, { body });
+  return await lite.request('POST', `articles/${articleId}/vote`, { content: 'json' }, { body });
 }
 
 export async function cancelVoteArticle(articleId: string) {
@@ -109,5 +109,5 @@ export async function cancelVoteArticle(articleId: string) {
     };
   }
 
-  return await lite.request('DELETE', `articles/${articleId}/vote`);
+  return await lite.request('DELETE', `articles/${articleId}/vote`, { content: 'json' });
 }

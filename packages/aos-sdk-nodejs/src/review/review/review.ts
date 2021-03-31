@@ -24,7 +24,7 @@ export async function createReview(body: CreateDto) {
     };
   }
 
-  return await lite.request('POST', 'reviews', { body });
+  return await lite.request('POST', 'reviews', { content: 'json' }, { body });
 }
 
 export async function getReview(reviewId: string) {
@@ -36,7 +36,7 @@ export async function getReview(reviewId: string) {
     return await genReviewDetail()
   }
 
-  return await lite.request('GET', `reviews/${reviewId}`);
+  return await lite.request('GET', `reviews/${reviewId}`, { content: 'json' });
 }
 
 export async function updateReview(reviewId: string, body: UpdateOneByIdDto) {
@@ -51,7 +51,7 @@ export async function updateReview(reviewId: string, body: UpdateOneByIdDto) {
     return await genReviewDetail()
   }
 
-  return await lite.request('PATCH', `reviews/${reviewId}`, { body });
+  return await lite.request('PATCH', `reviews/${reviewId}`, { content: 'json' }, { body });
 }
 
 export async function deleteReview(reviewId: string) {
@@ -63,7 +63,7 @@ export async function deleteReview(reviewId: string) {
     return { deleted: true }
   }
 
-  return await lite.request('DELETE', `reviews/${reviewId}`);
+  return await lite.request('DELETE', `reviews/${reviewId}`, { content: 'json' });
 }
 
 export async function getReviews(query: FindDto) {
@@ -75,7 +75,7 @@ export async function getReviews(query: FindDto) {
     return await genReviewList();
   }
 
-  return await lite.request('GET', 'reviews', { query });
+  return await lite.request('GET', 'reviews', { content: 'json' }, { query });
 }
 
 export async function voteReview(reviewId: string, body: VoteDto) {
@@ -90,7 +90,7 @@ export async function voteReview(reviewId: string, body: VoteDto) {
     return await genReputation();
   }
 
-  return await lite.request('POST', `reviews/${reviewId}/vote`, { body });
+  return await lite.request('POST', `reviews/${reviewId}/vote`, { content: 'json' }, { body });
 }
 
 export async function cancelVoteReview(reviewId: string) {
@@ -102,5 +102,5 @@ export async function cancelVoteReview(reviewId: string) {
     return { deleted: true }
   }
 
-  return await lite.request('DELETE', `reviews/${reviewId}/vote`);
+  return await lite.request('DELETE', `reviews/${reviewId}/vote`, { content: 'json' });
 }

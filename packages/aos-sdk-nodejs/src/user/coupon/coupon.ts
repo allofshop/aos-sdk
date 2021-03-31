@@ -29,5 +29,5 @@ export async function getUserCoupons(query: FindCouponsDto) {
     return await genUserCouponList();
   }
 
-  return await lite.request('GET', `users/me/coupons`, { query });
+  return await lite.request('GET', `users/me/coupons`, { content: 'json' }, { query });
 }

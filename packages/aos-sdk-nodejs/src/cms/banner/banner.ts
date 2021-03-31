@@ -15,5 +15,5 @@ export async function getBanners(query: FindDto) {
     return await genBanners(query.sectionName);
   }
 
-  return await lite.request('GET', 'banners', { query });
+  return await lite.request('GET', 'banners', { content: 'json' }, { query });
 }

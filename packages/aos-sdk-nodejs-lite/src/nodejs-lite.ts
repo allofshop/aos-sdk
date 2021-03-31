@@ -10,6 +10,7 @@ export interface InitializeOptions {
 
 interface Headers {
   'x-aos-signature': string;
+  'content-type': string;
 }
 
 type BodyDict = {
@@ -22,7 +23,14 @@ type QueryDict = {
 interface DataType {
   body?: BodyDict;
   query?: QueryDict;
+  formData?: FormData;
 }
+
+type ContentType = 'json' | 'formdata';
+interface RequestOption {
+  content: ContentType
+}
+
 
 const DEFAULT_OPTION: Partial<InitializeOptions> = {
   version: 1,
@@ -41,6 +49,9 @@ export function initialize(options: InitializeOptions) {
 export async function request(
   method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
   path: string,
+  options: RequestOption = {
+    content: 'json'
+  },
   data?: DataType
 ) {
   if (path[0] === '/') {
@@ -60,12 +71,23 @@ export async function request(
       realPath = realPath.slice(0, realPath.length - 1);
     }
 
-    if (data.body !== undefined) {
+    if (options.content === 'json' && data.body !== undefined) {
       bodyData = data.body;
+    }
+
+    if (options.content === 'formdata' && data.formData !== undefined) {
+      bodyData = data.formData;
     }
   }
 
-  const headers: Headers = { 'x-aos-signature': globalOption.shopId };
+  const headers: Headers = {
+    'x-aos-signature': globalOption.shopId,
+    'content-type': 'application/json',
+  };
+
+  if (options.content === 'formdata') {
+    headers['content-type'] = 'multipart/form-data';
+  }
 
   await axios({
     method,

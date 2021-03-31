@@ -25,7 +25,7 @@ export async function login(body: LoginDto) {
     return await genLogin(Config.mode);
   }
 
-  return await request('POST', 'auth/login', { body });
+  return await request('POST', 'auth/login', { content: 'json' }, { body });
 }
 
 export async function join(body: JoinDto) {
@@ -37,7 +37,7 @@ export async function join(body: JoinDto) {
     return await genJoin();
   }
 
-  return await request('POST', 'auth/join', { body });
+  return await request('POST', 'auth/join', { content: 'json' }, { body });
 }
 
 export async function logout(body: LogoutDto) {
@@ -49,7 +49,7 @@ export async function logout(body: LogoutDto) {
     return await genLogout();
   }
 
-  return await request('POST', 'auth/logout', { body });
+  return await request('POST', 'auth/logout', { content: 'json' }, { body });
 }
 
 export async function snsLogin() {
@@ -62,7 +62,7 @@ export async function requestVerificationMessage(
   const requestVerificationMessageValidator = new RequestVerificationMessageValidator();
   requestVerificationMessageValidator.validate(body, 'body');
 
-  return await request('POST', 'auth/requestVerificationMessage', {
+  return await request('POST', 'auth/requestVerificationMessage', { content: 'json' }, {
     body,
   });
 }
@@ -74,7 +74,7 @@ export async function changePassword(body: ChangePasswordDto) {
     console.log(`[DEVELOPMENT]: /auth/changePassword`);
     return await genChangePassword();
   }
-  return await request('POST', 'auth/changePassword', { body });
+  return await request('POST', 'auth/changePassword', { content: 'json' }, { body });
 }
 
 export async function guestLogin() {

@@ -16,7 +16,7 @@ export async function getVendor(vendorId: string) {
     return {};
   }
 
-  return await lite.request('GET', `vendors/${vendorId}`);
+  return await lite.request('GET', `vendors/${vendorId}`, { content: 'json' });
 }
 
 export async function getVendors(query: FindDto) {
@@ -28,5 +28,5 @@ export async function getVendors(query: FindDto) {
     return {};
   }
 
-  return await lite.request('GET', 'vendors', { query });
+  return await lite.request('GET', 'vendors', { content: 'json' }, { query });
 }
