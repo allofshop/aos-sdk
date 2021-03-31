@@ -6,7 +6,7 @@ import { sign } from 'jsonwebtoken';
 import { v4 } from 'uuid';
 
 import { OrderItemStatus } from '~/sales/order/vo';
-import { CustomerServiceStatus, CustomerServiceType } from '~/user/customerService/vo';
+import { CustomerServiceItemType, CustomerServiceStatus, CustomerServiceType } from '~/user/customerService/vo';
 import { OrderStatus } from '~/user/order/vo';
 
 async function _genImageFile() {
@@ -1387,6 +1387,17 @@ export async function genCommentList() {
   }
 }
 
+function _genCSItems(targetOrderItem: string){
+  return {
+    id: v4(),
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    code: v4(),
+    type: CustomerServiceItemType.SOURCE,
+    orderItemId: targetOrderItem,
+  }
+}
+
 async function _genCSData() {
   const order = await getRealOrderDetail();
   return {
@@ -1399,6 +1410,10 @@ async function _genCSData() {
     reason: 'CS사유',
     reasonDetail: '상세한 이유',
     order: order.data,
+    items: [
+      _genCSItems(order.data.items[0].id),
+      _genCSItems(order.data.items[1].id),
+    ]
   }
 }
 

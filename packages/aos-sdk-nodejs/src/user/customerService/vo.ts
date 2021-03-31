@@ -17,3 +17,8 @@ export enum CustomerServiceStatus {
   COMPLETED = 'COMPLETED',
   DEFERRED = 'DEFERRED',
 }
+
+export enum CustomerServiceItemType {
+  SOURCE = 'SOURCE',
+  DESTINATION = 'DESTINATION',
+}
