@@ -682,6 +682,7 @@ export async function getRealOrderDetail() {
           "review": "6021ead3af92d9e094ab5266",
           "code": "2021100000000-000",
           "quantity": 2,
+          "status": "DELIVERY-PROCESSING",
           "product": {
             "id": "6001589e1ed7396cfc05b354",
             "name": "옵션이 있는 상품",
@@ -882,6 +883,7 @@ export async function getRealOrderList() {
               "review": "6021ead3af92d9e094ab5266",
               "code": "2021100000000-000",
               "quantity": 2,
+              "status": "DELIVERY-PROCESSING",
               "product": {
                 "id": "6001589e1ed7396cfc05b354",
                 "name": "옵션이 있는 상품",
@@ -1408,11 +1410,10 @@ async function _genCSData() {
     code: v4(),
     status: CustomerServiceStatus.PROCESSING,
     reason: 'CS사유',
-    reasonDetail: '상세한 이유',
+    reasonDetail: '상세한 이유 상세한 이유 상세한 이유 상세한 이유',
     order: order.data,
     items: [
       _genCSItems(order.data.items[0].id),
-      _genCSItems(order.data.items[1].id),
     ]
   }
 }
