@@ -6,6 +6,7 @@ import { sign } from 'jsonwebtoken';
 import { v4 } from 'uuid';
 
 import { OrderItemStatus } from '~/sales/order/vo';
+import { CustomerServiceStatus, CustomerServiceType } from '~/user/customerService/vo';
 import { OrderStatus } from '~/user/order/vo';
 
 async function _genImageFile() {
@@ -1375,6 +1376,46 @@ export async function genCommentList() {
         await _genComment(),
         await _genComment(),
         await _genComment(),
+      ],
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
+    }
+  }
+}
+
+async function _genCSData() {
+  const order = await getRealOrderDetail();
+  return {
+    id: v4(),
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    type: CustomerServiceType.CANCEL,
+    code: v4(),
+    status: CustomerServiceStatus.PROCESSING,
+    reason: 'CS사유',
+    reasonDetail: '상세한 이유',
+    order: order.data,
+  }
+}
+
+export async function genCSDetail() {
+  return {
+    data: await _genCSData(),
+  }
+}
+
+export async function genCSList() {
+  return {
+    data: {
+      items: [
+        await _genCSData(),
+        await _genCSData(),
+        await _genCSData(),
+        await _genCSData(),
       ],
       currentItemCount: 4,
       itemsPerPage: 20,

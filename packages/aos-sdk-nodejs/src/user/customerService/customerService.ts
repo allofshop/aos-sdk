@@ -1,8 +1,8 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
+import { genCSDetail, genCSList } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
-
 
 import {
   CreateCustomerServiceDto,
@@ -23,7 +23,9 @@ export async function createUserCustomerService(
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: `);
-    return {};
+    return {
+      success: true,
+    };
   }
 
   return await lite.request('POST', `users/me/customerServices`, { body });
@@ -35,7 +37,7 @@ export async function getUserCustomerService(customerServiceId: string) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: `);
-    return {};
+    return await genCSDetail();
   }
 
   return await lite.request(
@@ -54,7 +56,7 @@ export async function updateUserCustomerService(
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: `);
-    return {};
+    return await genCSDetail();
   }
 
   return await lite.request(
@@ -85,7 +87,7 @@ export async function getUserCustomerServices(query: FindCustomerServicesDto) {
 
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: `);
-    return {};
+    return await genCSList();
   }
 
   return await lite.request('GET', `users/me/customerServices`, { query });
