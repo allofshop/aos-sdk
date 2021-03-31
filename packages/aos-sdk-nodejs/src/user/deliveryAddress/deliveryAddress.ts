@@ -39,6 +39,15 @@ export async function getDefaultUserDeilveryAddress() {
   return await lite.request('GET', `users/me/deliveryAddresses/default`);
 }
 
+export async function getUserDeilveryAddress(deliveryAddressId: string) {
+  if (Config.mode === "DEVELOPMENT") {
+    console.log(`[DEVELOPMENT]: `);
+    return await genUserDeliveryAddress();
+  }
+
+  return await lite.request('GET', `users/me/deliveryAddresses/${deliveryAddressId}`);
+}
+
 export async function updateUserDeliveryAddress(
   deliveryAddressId: string,
   body: UpdateDeliveryAddressByIdDto
