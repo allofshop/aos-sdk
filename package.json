@@ -21,6 +21,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "publish": "lerna run build && lerna publish",
     "test": "lerna run test"
   }
 }
