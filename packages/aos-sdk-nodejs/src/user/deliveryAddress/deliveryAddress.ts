@@ -30,7 +30,7 @@ export async function createUserDeliveryAddress(
   return await lite.request('POST', `users/me/deliveryAddresses`, { body });
 }
 
-export async function getDefaultUserDeilveryAddress() {
+export async function getDefaultUserDeliveryAddress() {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: `);
     return await genUserDeliveryAddress();
@@ -39,7 +39,7 @@ export async function getDefaultUserDeilveryAddress() {
   return await lite.request('GET', `users/me/deliveryAddresses/default`);
 }
 
-export async function getUserDeilveryAddress(deliveryAddressId: string) {
+export async function getUserDeliveryAddress(deliveryAddressId: string) {
   if (Config.mode === "DEVELOPMENT") {
     console.log(`[DEVELOPMENT]: `);
     return await genUserDeliveryAddress();
