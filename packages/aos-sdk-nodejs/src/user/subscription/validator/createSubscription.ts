@@ -27,14 +27,14 @@ class OrdererValidator {
     this.stringValidator.validate(orderer.name, `${location}.name`);
     this.stringValidator.validate(orderer.user, `${location}.user`);
 
-    if (orderer.homePhone !== undefined) {
-      this.stringValidator.validate(orderer.homePhone, `${location}.homePhone`);
+    if (orderer.subPhoneNumber !== undefined) {
+      this.stringValidator.validate(orderer.subPhoneNumber, `${location}.subPhoneNumber`);
     }
 
-    if (orderer.mobilePhone !== undefined) {
+    if (orderer.mainPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        orderer.mobilePhone,
-        `${location}.mobilePhone`
+        orderer.mainPhoneNumber,
+        `${location}.mainPhoneNumber`
       );
     }
 

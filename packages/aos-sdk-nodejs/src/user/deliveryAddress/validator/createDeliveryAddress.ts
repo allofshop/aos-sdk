@@ -15,12 +15,12 @@ class AddressValidator {
   public validate(address: Address, location: string) {
     this.objectValidator.validate(address, location);
     this.stringValidator.validate(address.zipCode, `${location}.zipCode`);
-    this.stringValidator.validate(address.basic, `${location}.basic`);
-    this.stringValidator.validate(address.locality, `${location}.locality`);
-    if (address.region !== undefined) {
-      this.stringValidator.validate(address.region, `${location}.region`);
-    }
-    this.stringValidator.validate(address.country, `${location}.country`);
+    this.stringValidator.validate(address.address1, `${location}.address1`);
+    this.stringValidator.validate(address.address2, `${location}.address2`);
+    // if (address.region !== undefined) {
+    //   this.stringValidator.validate(address.region, `${location}.region`);
+    // }
+    // this.stringValidator.validate(address.country, `${location}.country`);
   }
 }
 
@@ -42,11 +42,11 @@ export class CreateDeliveryAddressValidator {
       body.recipientName,
       `${location}.recipientName`
     );
-    this.stringValidator.validate(body.mobilePhone, `${location}.mobilePhone`);
+    this.stringValidator.validate(body.mainPhoneNumber, `${location}.mainPhoneNumber`);
     this.addressValidator.validate(body.address, `${location}.address`);
 
-    if (body.homePhone !== undefined) {
-      this.stringValidator.validate(body.homePhone, `${location}.homePhone`);
+    if (body.subPhoneNumber !== undefined) {
+      this.stringValidator.validate(body.subPhoneNumber, `${location}.subPhoneNumber`);
     }
   }
 }

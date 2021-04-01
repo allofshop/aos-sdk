@@ -1,6 +1,5 @@
 export type Address = {
   zipCode: string;
-  basic: string;
-  locality: string;
-  region?: string;
+  address1: string;
+  address2: string;
 };

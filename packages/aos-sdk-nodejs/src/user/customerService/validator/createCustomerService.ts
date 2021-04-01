@@ -121,12 +121,12 @@ class CollectingAddressValidator {
   public validate(address: CollectingAddress, location: string) {
     this.objectValidator.validate(address, location);
     this.stringValidator.validate(address.zipCode, `${location}.zipCode`);
-    this.stringValidator.validate(address.basic, `${location}.basic`);
-    this.stringValidator.validate(address.locality, `${location}.locality`);
+    this.stringValidator.validate(address.address1, `${location}.address1`);
+    this.stringValidator.validate(address.address2, `${location}.address2`);
 
-    if (address.region !== undefined) {
-      this.stringValidator.validate(address.region, `${location}.region`);
-    }
+    // if (address.region !== undefined) {
+    //   this.stringValidator.validate(address.region, `${location}.region`);
+    // }
   }
 }
 
@@ -160,12 +160,12 @@ class DeliveryAddressValidator {
   public validate(address: DeliveryAddress, location: string) {
     this.objectValidator.validate(address, location);
     this.stringValidator.validate(address.zipCode, `${location}.zipCode`);
-    this.stringValidator.validate(address.basic, `${location}.basic`);
-    this.stringValidator.validate(address.locality, `${location}.locality`);
+    this.stringValidator.validate(address.address1, `${location}.address1`);
+    this.stringValidator.validate(address.address2, `${location}.address2`);
 
-    if (address.region !== undefined) {
-      this.stringValidator.validate(address.region, `${location}.region`);
-    }
+    // if (address.region !== undefined) {
+    //   this.stringValidator.validate(address.region, `${location}.region`);
+    // }
   }
 }
 

@@ -25,14 +25,14 @@ class OrdererValidator {
       this.stringValidator.validate(orderer.name, `${location}.name`);
     }
 
-    if (orderer.homePhone !== undefined) {
-      this.stringValidator.validate(orderer.homePhone, `${location}.homePhone`);
+    if (orderer.subPhoneNumber !== undefined) {
+      this.stringValidator.validate(orderer.subPhoneNumber, `${location}.subPhoneNumber`);
     }
 
-    if (orderer.mobilePhone !== undefined) {
+    if (orderer.mainPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        orderer.mobilePhone,
-        `${location}.mobilePhone`
+        orderer.mainPhoneNumber,
+        `${location}.mainPhoneNumber`
       );
     }
 
@@ -62,17 +62,17 @@ class RecipientValidator {
       this.stringValidator.validate(recipient.name, `${location}.name`);
     }
 
-    if (recipient.homePhone !== undefined) {
+    if (recipient.subPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        recipient.homePhone,
-        `${location}.homePhone`
+        recipient.subPhoneNumber,
+        `${location}.subPhoneNumber`
       );
     }
 
-    if (recipient.mobilePhone !== undefined) {
+    if (recipient.mainPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        recipient.mobilePhone,
-        `${location}.mobilePhone`
+        recipient.mainPhoneNumber,
+        `${location}.mainPhoneNumber`
       );
     }
   }

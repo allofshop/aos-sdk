@@ -1,5 +1,5 @@
 export type Recipient = {
   name: string;
-  homePhone?: string;
-  mobilePhone?: string;
+  subPhoneNumber?: string;
+  mainPhoneNumber?: string;
 };

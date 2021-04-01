@@ -30,14 +30,14 @@ class OrdererValidator {
     this.objectValidator.validate(orderer, location);
     this.stringValidator.validate(orderer.name, `${location}.name`);
 
-    if (orderer.homePhone !== undefined) {
-      this.stringValidator.validate(orderer.homePhone, `${location}.homePhone`);
+    if (orderer.subPhoneNumber !== undefined) {
+      this.stringValidator.validate(orderer.subPhoneNumber, `${location}.subPhoneNumber`);
     }
 
-    if (orderer.mobilePhone !== undefined) {
+    if (orderer.mainPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        orderer.mobilePhone,
-        `${location}.mobilePhone`
+        orderer.mainPhoneNumber,
+        `${location}.mainPhoneNumber`
       );
     }
 
@@ -64,17 +64,17 @@ class RecipientValidator {
     this.objectValidator.validate(recipient, location);
     this.stringValidator.validate(recipient.name, `${location}.name`);
 
-    if (recipient.homePhone !== undefined) {
+    if (recipient.subPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        recipient.homePhone,
-        `${location}.homePhone`
+        recipient.subPhoneNumber,
+        `${location}.subPhoneNumber`
       );
     }
 
-    if (recipient.mobilePhone !== undefined) {
+    if (recipient.mainPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        recipient.mobilePhone,
-        `${location}.mobilePhone`
+        recipient.mainPhoneNumber,
+        `${location}.mainPhoneNumber`
       );
     }
   }
@@ -92,12 +92,12 @@ class AddressValidator {
   public validate(address: Address, location: string) {
     this.objectValidator.validate(address, location);
     this.stringValidator.validate(address.zipCode, `${location}.zipCode`);
-    this.stringValidator.validate(address.basic, `${location}.basic`);
-    this.stringValidator.validate(address.locality, `${location}.locality`);
+    this.stringValidator.validate(address.address1, `${location}.address1`);
+    this.stringValidator.validate(address.address2, `${location}.address2`);
 
-    if (address.region !== undefined) {
-      this.stringValidator.validate(address.region, `${location}.region`);
-    }
+    // if (address.region !== undefined) {
+    //   this.stringValidator.validate(address.region, `${location}.region`);
+    // }
   }
 }
 

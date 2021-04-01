@@ -615,12 +615,13 @@ export async function getRealOrderDetail() {
           },
           "recipient": {
             "name": "수령자면",
-            "homePhone": "0282918282"
+            "subPhoneNumber": "0282918282"
           },
           "address": {
             "zipCode": "06037",
             "locality": "서울",
-            "basic": "도산대로17길 4, 5층",
+            "address1": "도산대로17길 4",
+            "address2": "5층",
             "country": "대한민국"
           },
           "stats": {
@@ -816,12 +817,13 @@ export async function getRealOrderList() {
               },
               "recipient": {
                 "name": "수령자면",
-                "homePhone": "0282918282"
+                "subPhoneNumber": "0282918282"
               },
               "address": {
                 "zipCode": "06037",
                 "locality": "서울",
-                "basic": "도산대로17길 4, 5층",
+                "address1": "도산대로17길 4",
+                "address2": "5층",
                 "country": "대한민국"
               },
               "stats": {

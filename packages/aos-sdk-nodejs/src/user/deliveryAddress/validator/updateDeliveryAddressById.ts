@@ -23,17 +23,17 @@ class AddressValidator {
       this.stringValidator.validate(address.zipCode, `${location}.zipCode`);
     }
 
-    if (address.basic !== undefined) {
-      this.stringValidator.validate(address.basic, `${location}.basic`);
+    if (address.address1 !== undefined) {
+      this.stringValidator.validate(address.address1, `${location}.address1`);
     }
 
-    if (address.locality !== undefined) {
-      this.stringValidator.validate(address.locality, `${location}.locality`);
+    if (address.address2 !== undefined) {
+      this.stringValidator.validate(address.address2, `${location}.address2`);
     }
 
-    if (address.region !== undefined) {
-      this.stringValidator.validate(address.region, `${location}.region`);
-    }
+    // if (address.region !== undefined) {
+    //   this.stringValidator.validate(address.region, `${location}.region`);
+    // }
   }
 }
 
@@ -68,15 +68,15 @@ export class UpdateDeliveryAddressByIdValidator {
       );
     }
 
-    if (body.mobilePhone !== undefined) {
+    if (body.mainPhoneNumber !== undefined) {
       this.stringValidator.validate(
-        body.mobilePhone,
-        `${location}.mobilePhone`
+        body.mainPhoneNumber,
+        `${location}.mainPhoneNumber`
       );
     }
 
-    if (body.homePhone !== undefined) {
-      this.stringValidator.validate(body.homePhone, `${location}.homePhone`);
+    if (body.subPhoneNumber !== undefined) {
+      this.stringValidator.validate(body.subPhoneNumber, `${location}.subPhoneNumber`);
     }
 
     if (body.address !== undefined) {
