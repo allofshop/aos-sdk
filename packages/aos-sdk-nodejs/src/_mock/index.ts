@@ -26,26 +26,42 @@ async function _genImageFile() {
   }
 }
 
+function _genArticleData() {
+  return {
+    id: v4(),
+    author: {
+      displayName: '작성자',
+    },
+    title: '타이틀',
+    content: '내용',
+    comments: [{
+      author: {
+        displayName: '관리자',
+      },
+      content: '답변 또는 코멘트',
+    }],
+    createdAt: new Date(),
+  }
+}
+
 export async function genArticleList() {
   return {
-    data: {
-      id: v4(),
-      title: '타이틀',
-      content: '내용',
-      createdAt: new Date(),
+    data:
+    {
+      currentItemCount: 4,
+      itemsPerPage: 20,
+      pageIndex: 0,
+      startIndex: 0,
+      totalItems: 4,
+      totalPages: 1,
+      items: [_genArticleData(),_genArticleData(),_genArticleData(),_genArticleData()],
     },
   };
 }
 
 export async function genArticleDetail() {
   return {
-    data: {
-      id: v4(),
-      title: '타이틀',
-      content: '내용',
-      createdAt: new Date(),
-      author: '김작가',
-    },
+    data: _genArticleData(),
   };
 }
 
