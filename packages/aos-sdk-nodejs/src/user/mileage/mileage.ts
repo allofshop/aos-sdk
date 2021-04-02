@@ -10,10 +10,15 @@ export async function getUserMileages(query: FindMileagesDto) {
   const findMileagesValidator: FindMileagesValidator = new FindMileagesValidator();
   findMileagesValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genUserMileageList();
   }
 
-  return await lite.request('GET', `users/me/mileages`, { content: 'json' }, { query });
+  return await lite.request(
+    'GET',
+    `users/me/mileages`,
+    { content: 'json' },
+    { query }
+  );
 }

@@ -4,7 +4,6 @@ import { genArticleDetail, genArticleList, genReputation } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
-
 import {
   CreateDto,
   FindArticlesByBoardIdDto,
@@ -22,7 +21,7 @@ export async function createArticle(body: CreateDto) {
   const createValidator: CreateValidator = new CreateValidator();
   createValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genArticleDetail();
   }
@@ -34,12 +33,14 @@ export async function getArticle(articleId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(articleId, 'articleId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genArticleDetail();
   }
 
-  return await lite.request('GET', `articles/${articleId}`, { content: 'json' });
+  return await lite.request('GET', `articles/${articleId}`, {
+    content: 'json',
+  });
 }
 
 export async function updateArticle(articleId: string, body: UpdateOneByIdDto) {
@@ -49,33 +50,40 @@ export async function updateArticle(articleId: string, body: UpdateOneByIdDto) {
   const updateOneByIdValidator: UpdateOneByIdValidator = new UpdateOneByIdValidator();
   updateOneByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genArticleDetail();
   }
 
-  return await lite.request('PATCH', `articles/${articleId}`, { content: 'json' }, { body });
+  return await lite.request(
+    'PATCH',
+    `articles/${articleId}`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function deleteArticle(articleId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(articleId, 'articleId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
     };
   }
 
-  return await lite.request('DELETE', `articles/${articleId}`, { content: 'json' });
+  return await lite.request('DELETE', `articles/${articleId}`, {
+    content: 'json',
+  });
 }
 
 export async function getArticles(query: FindArticlesByBoardIdDto) {
   const findArticlesByBoardIdValidator: FindArticlesByBoardIdValidator = new FindArticlesByBoardIdValidator();
   findArticlesByBoardIdValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genArticleList();
   }
@@ -90,24 +98,31 @@ export async function voteArticle(articleId: string, body: VoteDto) {
   const voteValidator: VoteValidator = new VoteValidator();
   voteValidator.validate(body, 'bodvalidate');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genReputation();
   }
 
-  return await lite.request('POST', `articles/${articleId}/vote`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `articles/${articleId}/vote`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function cancelVoteArticle(articleId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(articleId, 'articleId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
     };
   }
 
-  return await lite.request('DELETE', `articles/${articleId}/vote`, { content: 'json' });
+  return await lite.request('DELETE', `articles/${articleId}/vote`, {
+    content: 'json',
+  });
 }

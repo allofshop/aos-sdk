@@ -21,21 +21,26 @@ export async function createUserCustomerService(
   const createCustomerServiceValidator: CreateCustomerServiceValidator = new CreateCustomerServiceValidator();
   createCustomerServiceValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       success: true,
     };
   }
 
-  return await lite.request('POST', `users/me/customerServices`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `users/me/customerServices`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function getUserCustomerService(customerServiceId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(customerServiceId, 'customerServiceId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genCSDetail();
   }
@@ -54,7 +59,7 @@ export async function updateUserCustomerService(
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(customerServiceId, 'customerServiceId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genCSDetail();
   }
@@ -71,7 +76,7 @@ export async function deleteUserCustomerService(customerServiceId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(customerServiceId, 'customerServiceId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
@@ -79,7 +84,7 @@ export async function deleteUserCustomerService(customerServiceId: string) {
   return await lite.request(
     'DELETE',
     `users/me/customerServices/${customerServiceId}`,
-    { content: 'json' },
+    { content: 'json' }
   );
 }
 
@@ -87,12 +92,17 @@ export async function getUserCustomerServices(query: FindCustomerServicesDto) {
   const findCustomerServicesValidator: FindCustomerServicesValidator = new FindCustomerServicesValidator();
   findCustomerServicesValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genCSList();
   }
 
-  return await lite.request('GET', `users/me/customerServices`, { content: 'json' }, { query });
+  return await lite.request(
+    'GET',
+    `users/me/customerServices`,
+    { content: 'json' },
+    { query }
+  );
 }
 
 export async function getUserCustomerServiceStats(
@@ -101,14 +111,17 @@ export async function getUserCustomerServiceStats(
   const getCustomerServiceStatsValidator: GetCustomerServiceStatsValidator = new GetCustomerServiceStatsValidator();
   getCustomerServiceStatsValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
 
-  return await lite.request('GET', `users/me/customerServices/getStats`,
-  { content: 'json' },
-  {
-    query,
-  });
+  return await lite.request(
+    'GET',
+    `users/me/customerServices/getStats`,
+    { content: 'json' },
+    {
+      query,
+    }
+  );
 }

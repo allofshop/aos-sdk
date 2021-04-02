@@ -20,7 +20,7 @@ export enum PayMethod {
 /**
  * 주문 항목 상태
  */
- export enum OrderItemStatus {
+export enum OrderItemStatus {
   /**
    * 임시
    */

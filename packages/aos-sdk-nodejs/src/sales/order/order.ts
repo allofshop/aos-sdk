@@ -4,7 +4,6 @@ import { genOrder, genOrderCheckout } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
-
 import {
   CheckoutOneByIdDto,
   CreateDto,
@@ -24,7 +23,7 @@ export async function createOrder(body: CreateDto) {
   const createBodyValidator: CreateValidator = new CreateValidator();
   createBodyValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genOrder();
   }
@@ -36,7 +35,7 @@ export async function getOrder(orderId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(orderId, 'orderId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genOrder();
   }
@@ -51,12 +50,17 @@ export async function updateOrder(orderId: string, body: UpdateOneByIdDto) {
   const updateBodyValidator: UpdateOneByIdValidator = new UpdateOneByIdValidator();
   updateBodyValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genOrder();
   }
 
-  return await lite.request('PATCH', `orders/${orderId}`, { content: 'json' }, { body });
+  return await lite.request(
+    'PATCH',
+    `orders/${orderId}`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function updateOrderItem(
@@ -71,7 +75,7 @@ export async function updateOrderItem(
   const updateItemBodyValidator: UpdateItemByIdValidator = new UpdateItemByIdValidator();
   updateItemBodyValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genOrder();
   }
@@ -91,7 +95,7 @@ export async function deleteOrderItem(orderId: string, orderItemId: string) {
   stringValidator.validate(orderId, 'orderId');
   stringValidator.validate(orderItemId, 'orderItemId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
@@ -101,7 +105,7 @@ export async function deleteOrderItem(orderId: string, orderItemId: string) {
   return await lite.request(
     'DELETE',
     `orders/${orderId}/orderItems/${orderItemId}`,
-    { content: 'json' },
+    { content: 'json' }
   );
 }
 
@@ -112,12 +116,17 @@ export async function checkoutOrder(orderId: string, body: CheckoutOneByIdDto) {
   const checkoutOneByIdValidator: CheckoutOneByIdValidator = new CheckoutOneByIdValidator();
   checkoutOneByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genOrderCheckout();
   }
 
-  return await lite.request('POST', `orders/${orderId}/checkout`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `orders/${orderId}/checkout`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function doneOrder(orderId: string, body: DoneByIdDto) {
@@ -127,10 +136,15 @@ export async function doneOrder(orderId: string, body: DoneByIdDto) {
   const doneByIdValidator: DoneByIdValidator = new DoneByIdValidator();
   doneByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genOrder();
   }
 
-  return await lite.request('POST', `orders/${orderId}/done`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `orders/${orderId}/done`,
+    { content: 'json' },
+    { body }
+  );
 }

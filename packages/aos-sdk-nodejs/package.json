@@ -10,7 +10,6 @@
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "lint": "./node_modules/.bin/eslint src/**",
-    "format": "./node_modeuls/.bin/prettier --write \"{,!(node_modules)/**/}*.{js,jsx}\"",
     "build": "rm -rf .dist && ./node_modules/.bin/webpack --mode production --config ./webpack.config.js"
   },
   "author": {

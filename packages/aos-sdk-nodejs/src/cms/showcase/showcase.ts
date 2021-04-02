@@ -4,12 +4,11 @@ import { genShowcase, genShowcases } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
-
 export async function getShowcase(slug: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(slug, 'slug');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /showcases`);
     return genShowcase(slug);
   }
@@ -19,7 +18,7 @@ export async function getShowcase(slug: string) {
 
 // TODO: 서버에서 query Dto가 비어있음
 export async function getShowcases(query: any) {
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /showcases`);
     return genShowcases(query.slug);
   }

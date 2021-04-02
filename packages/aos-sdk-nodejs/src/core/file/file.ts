@@ -4,10 +4,15 @@ import { genFile } from '~/_mock';
 import Config from '~/config';
 
 export async function uploadFile(formData: FormData) {
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /files`);
     return await genFile();
   }
 
-  return await lite.request('GET', 'files', { content: 'formdata' }, { formData });
+  return await lite.request(
+    'GET',
+    'files',
+    { content: 'formdata' },
+    { formData }
+  );
 }

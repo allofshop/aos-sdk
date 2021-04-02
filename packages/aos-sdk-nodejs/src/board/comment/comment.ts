@@ -4,7 +4,6 @@ import { genComment, genCommentList } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
-
 import { CreateDto, FindByArticleIdDto, UpdateOneByIdDto } from './type';
 import {
   CreateValidator,
@@ -24,7 +23,7 @@ export async function createComment(
   const createValidator = new CreateValidator();
   createValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genComment();
   }
@@ -51,7 +50,7 @@ export async function updateComment(
   const updateOneByIdValidator = new UpdateOneByIdValidator();
   updateOneByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genComment();
   }
@@ -74,7 +73,7 @@ export async function deleteComment(
   stringValidator.validate(articleId, 'articleId');
   stringValidator.validate(commentId, 'commentId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
@@ -100,7 +99,7 @@ export async function getComments(
   const findByArticleIdValidator = new FindByArticleIdValidator();
   findByArticleIdValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genCommentList();
   }

@@ -31,7 +31,10 @@ class OrdererValidator {
     this.stringValidator.validate(orderer.name, `${location}.name`);
 
     if (orderer.subPhoneNumber !== undefined) {
-      this.stringValidator.validate(orderer.subPhoneNumber, `${location}.subPhoneNumber`);
+      this.stringValidator.validate(
+        orderer.subPhoneNumber,
+        `${location}.subPhoneNumber`
+      );
     }
 
     if (orderer.mainPhoneNumber !== undefined) {

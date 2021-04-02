@@ -76,7 +76,10 @@ export class UpdateDeliveryAddressByIdValidator {
     }
 
     if (body.subPhoneNumber !== undefined) {
-      this.stringValidator.validate(body.subPhoneNumber, `${location}.subPhoneNumber`);
+      this.stringValidator.validate(
+        body.subPhoneNumber,
+        `${location}.subPhoneNumber`
+      );
     }
 
     if (body.address !== undefined) {

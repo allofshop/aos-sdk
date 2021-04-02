@@ -96,7 +96,7 @@ export async function genCartDetail() {
   };
 }
 
-export async function genCategoryList(): Promise<any> {
+export async function genCategoryList() {
   return {
     data: {
       currentItemCount: 5,
