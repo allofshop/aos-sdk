@@ -15,7 +15,7 @@ import {
 } from './validator';
 
 export async function getUser() {
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genUser();
   }
@@ -27,7 +27,7 @@ export async function updateUser(body: UpdateUserDto) {
   const updateUserValidator: UpdateUserValidator = new UpdateUserValidator();
   updateUserValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genUser();
   }
@@ -36,11 +36,11 @@ export async function updateUser(body: UpdateUserDto) {
 }
 
 export async function deleteUser() {
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
-    }
+    };
   }
   return await lite.request('DELETE', `users/me`);
 }
@@ -49,14 +49,19 @@ export async function updatePassword(body: UpdatePasswordDto) {
   const updatePasswordValidator: UpdatePasswordValidator = new UpdatePasswordValidator();
   updatePasswordValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       success: true,
     };
   }
 
-  return await lite.request('POST', `users/me/changePassword`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `users/me/changePassword`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function getReviewWriteableOrderItems(
@@ -65,7 +70,7 @@ export async function getReviewWriteableOrderItems(
   const findReviewWriteableOrderItemsValidator: FindReviewWriteableOrderItemsValidator = new FindReviewWriteableOrderItemsValidator();
   findReviewWriteableOrderItemsValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genWriteableOrderItem();
   }

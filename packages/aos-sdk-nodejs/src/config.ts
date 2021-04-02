@@ -1,7 +1,7 @@
 import { InitializeOptions } from '@allofshop/aos-sdk-nodejs-lite';
 
 export interface ConfigInterface extends InitializeOptions {
-  mode: 'PRODUCTION' | 'DEVELOPMENT'
+  mode: 'PRODUCTION' | 'DEVELOPMENT';
 }
 
 const config: ConfigInterface = {
@@ -10,7 +10,7 @@ const config: ConfigInterface = {
   host: '',
   secret: '',
   shopId: '',
-  version: 1
-}
+  version: 1,
+};
 
 export default config;

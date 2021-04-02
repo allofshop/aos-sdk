@@ -1,4 +1,4 @@
-import { initialize } from '@allofshop/aos-sdk-nodejs-lite';
+import { initialize, setAuthorization } from '@allofshop/aos-sdk-nodejs-lite';
 
 import * as Auth from './auth';
 import * as Board from './board';
@@ -21,11 +21,12 @@ export default {
   Review,
   Sales,
   User,
-  setConfig: (config: ConfigInterface ) => {
+  setConfig: (config: ConfigInterface) => {
     Object.assign(Config, config);
     initialize({
       ...config,
-    })
+    });
   },
-  getConfig: () => Config.mode,
-}
+  setAuthorization,
+  getConfig: () => Config,
+};

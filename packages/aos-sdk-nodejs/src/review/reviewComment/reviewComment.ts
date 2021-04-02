@@ -3,7 +3,6 @@ import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
-
 import { CreateDto, UpdateOneByIdDto } from './type';
 import { CreateValidator, UpdateOneByIdValidator } from './validator';
 
@@ -14,12 +13,17 @@ export async function createReviewComment(reviewId: string, body: CreateDto) {
   const createValidator: CreateValidator = new CreateValidator();
   createValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
 
-  return await lite.request('POST', `reviews/${reviewId}/comments`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `reviews/${reviewId}/comments`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function getReviewComment(reviewId: string, commentId: string) {
@@ -27,7 +31,7 @@ export async function getReviewComment(reviewId: string, commentId: string) {
   stringValidator.validate(reviewId, 'reviewId');
   stringValidator.validate(commentId, 'commentId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
@@ -47,7 +51,7 @@ export async function updateReviewComment(
   const updateOneByIdValidator: UpdateOneByIdValidator = new UpdateOneByIdValidator();
   updateOneByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
@@ -67,7 +71,7 @@ export async function deleteReviewComment(reviewId: string, commentId: string) {
   stringValidator.validate(reviewId, 'reviewId');
   stringValidator.validate(commentId, 'commentId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
@@ -83,5 +87,10 @@ export async function getReviewComments(reviewId: string, query: any) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(reviewId, 'reviewId');
 
-  return await lite.request('GET', `reviews/${reviewId}/comments`, { content: 'json' }, { query });
+  return await lite.request(
+    'GET',
+    `reviews/${reviewId}/comments`,
+    { content: 'json' },
+    { query }
+  );
 }

@@ -21,12 +21,17 @@ export async function createUserWishlist(body: CreateWishlistDto) {
   const createWishlistValidator: CreateWishlistValidator = new CreateWishlistValidator();
   createWishlistValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
 
-  return await lite.request('POST', `users/me/wishlists`, { content: 'json' }, { body });
+  return await lite.request(
+    'POST',
+    `users/me/wishlists`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function addUserWishlistProduct(
@@ -39,7 +44,7 @@ export async function addUserWishlistProduct(
   const createWishlistProductValidator: CreateWishlistProductValidator = new CreateWishlistProductValidator();
   createWishlistProductValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
@@ -60,33 +65,43 @@ export async function addUserDefaultWishlistProduct(
   const createWishlistProductValidator: CreateWishlistProductValidator = new CreateWishlistProductValidator();
   createWishlistProductValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
 
-  return await lite.request('POST', `users/me/wishlists/default/products`, { content: 'json' }, {
-    body,
-  });
+  return await lite.request(
+    'POST',
+    `users/me/wishlists/default/products`,
+    { content: 'json' },
+    {
+      body,
+    }
+  );
 }
 
 export async function getUserWishlists(query: FindWishlistsDto) {
   const findWishlistsValidator: FindWishlistsValidator = new FindWishlistsValidator();
   findWishlistsValidator.validate(query, 'query');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
 
-  return await lite.request('GET', `users/me/wishlists`, { content: 'json' }, { query });
+  return await lite.request(
+    'GET',
+    `users/me/wishlists`,
+    { content: 'json' },
+    { query }
+  );
 }
 
 export async function getUserWishlist(wishlistId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(wishlistId, 'wishlistId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genWishlist();
   }
@@ -95,7 +110,7 @@ export async function getUserWishlist(wishlistId: string) {
 }
 
 export async function getUserDefaultWishlist() {
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genWishlist();
   }
@@ -113,33 +128,43 @@ export async function updateUserWishlist(
   const updateWishlistByIdValidator: UpdateWishlistByIdValidator = new UpdateWishlistByIdValidator();
   updateWishlistByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return await genWishlist();
   }
 
-  return await lite.request('PATCH', `users/me/wishlists/${wishlistId}`, { content: 'json' }, {
-    body,
-  });
+  return await lite.request(
+    'PATCH',
+    `users/me/wishlists/${wishlistId}`,
+    { content: 'json' },
+    {
+      body,
+    }
+  );
 }
 
 export async function updateUserDefaultWishlist(body: UpdateWishlistByIdDto) {
   const updateWishlistByIdValidator: UpdateWishlistByIdValidator = new UpdateWishlistByIdValidator();
   updateWishlistByIdValidator.validate(body, 'body');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {};
   }
 
-  return await lite.request('PATCH', `users/me/wishlists/default`, { content: 'json' }, { body });
+  return await lite.request(
+    'PATCH',
+    `users/me/wishlists/default`,
+    { content: 'json' },
+    { body }
+  );
 }
 
 export async function deleteUserWishlist(wishlistId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(wishlistId, 'wishlistId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
@@ -157,7 +182,7 @@ export async function deleteUserWishlistProduct(
   stringValidator.validate(wishlistId, 'wishlistId');
   stringValidator.validate(productId, 'productId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
@@ -167,26 +192,28 @@ export async function deleteUserWishlistProduct(
   return await lite.request(
     'DELETE',
     `users/me/wishlists/${wishlistId}/products/${productId}`,
-    { content: 'json' },
+    { content: 'json' }
   );
 }
 
 export async function deleteUserDefaultWishlist() {
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
     };
   }
 
-  return await lite.request('DELETE', `users/me/wishlists/default`, { content: 'json' });
+  return await lite.request('DELETE', `users/me/wishlists/default`, {
+    content: 'json',
+  });
 }
 
 export async function deleteUserDefaultWishlistProduct(productId: string) {
   const stringValidator: StringValidator = new StringValidator();
   stringValidator.validate(productId, 'productId');
 
-  if (Config.mode === "DEVELOPMENT") {
+  if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
       deleted: true,
@@ -196,6 +223,6 @@ export async function deleteUserDefaultWishlistProduct(productId: string) {
   return await lite.request(
     'DELETE',
     `users/me/wishlists/default/products/${productId}`,
-    { content: 'json' },
+    { content: 'json' }
   );
 }
