@@ -201,6 +201,11 @@ export async function genProductDetail() {
       taxRatio: 10,
       taxPrice: 455,
       priceBeforeTax: 4545,
+      featuredImages: [
+        await _genImageFile(),
+        await _genImageFile(),
+        await _genImageFile(),
+      ],
       price: 5000,
       orderQuantity: {
         type: 'ITEM',
@@ -299,7 +304,6 @@ export async function genProductDetail() {
         ],
         extras: [],
       },
-      featuredImages: [],
       images: [],
       brand: null,
       manufacturer: '5fbb38e6c9515b0eef4c5c2b',
