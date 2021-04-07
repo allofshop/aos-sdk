@@ -1077,6 +1077,20 @@ export async function genCartItem() {
   };
 }
 
+export async function genCartItemUpdate() {
+  return {
+    data: {
+      ...(await genCartItem()),
+      stats: {
+        productPrice: getRandomNumber(100000),
+        discountPrice: getRandomNumber(100000),
+        deliveryPrice: getRandomNumber(100000),
+        totalPrice: getRandomNumber(100000),
+      },
+    },
+  };
+}
+
 function getRandomNumber(power: number) {
   return parseInt((Math.random() * power).toFixed(0));
 }
