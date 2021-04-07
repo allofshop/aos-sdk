@@ -95,9 +95,6 @@ export async function updateCartItem(
   stringValidator.validate(cartId, 'cartId');
   stringValidator.validate(cartItemId, 'cartItemId');
 
-  const updateItemByIdValidator: UpdateItemByIdValidator = new UpdateItemByIdValidator();
-  updateItemByIdValidator.validate(body, 'body');
-
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/${cartId}/items/${cartItemId}`);
     return await genCartItemUpdate();
