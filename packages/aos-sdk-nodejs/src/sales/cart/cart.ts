@@ -1,11 +1,6 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
-import {
-  genCartDetail,
-  genCartItem,
-  genCartItemUpdate,
-  genOrder,
-} from '~/_mock';
+import { genCartDetail, genCartItem, genOrder } from '~/_mock';
 import { StringValidator } from '~/base/validator';
 import Config from '~/config';
 
@@ -97,7 +92,7 @@ export async function updateCartItem(
 
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/${cartId}/items/${cartItemId}`);
-    return await genCartItemUpdate();
+    return await genCartDetail();
   }
 
   return await lite.request(
