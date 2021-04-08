@@ -1292,6 +1292,7 @@ async function _genMileageListItem() {
     available: true,
     point: getRandomNumber(1000),
     comment: 'mileage',
+    createdAt: new Date(),
   };
 }
 
