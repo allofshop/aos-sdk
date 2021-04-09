@@ -410,27 +410,7 @@ export async function genReviewDetail() {
         await _genImageFile(),
         await _genImageFile(),
       ],
-      orderItem: {
-        id: v4(),
-        code: v4(),
-        quantity: getRandomNumber(10),
-        review: undefined,
-        product: {
-          id: v4(),
-          name: '상품',
-          price: 123,
-          // option
-        },
-        // variant?: ProductVariantJson;
-        deliveryItem: v4(),
-        customerServiceItem: v4(),
-        discounts: [],
-        coupons: [],
-        mileages: [],
-        status: 'DRAFT',
-        stats: {},
-        createdAt: new Date(),
-      },
+      orderItem: await _genOrderItem(),
     },
   };
 }
@@ -439,7 +419,6 @@ export async function genReviewList() {
   return {
     data: {
       items: [
-        await genReviewItem(),
         await genReviewItem(),
         await genReviewItem(),
         await genReviewItem(),
@@ -514,6 +493,11 @@ async function _genOrderItem() {
       name: '상품이름',
       price: getRandomNumber(10000),
       code: v4(),
+      featuredImages: [
+        await _genImageFile(),
+        await _genImageFile(),
+        await _genImageFile(),
+      ],
     },
     stats: {
       mileagePoint: getRandomNumber(100000),
@@ -996,13 +980,14 @@ async function genReviewItem() {
   return {
     id: v4(),
     content: 'content content content content sample',
-    score: 3.4,
+    score: getRandomNumber(5),
     images: [
       await _genImageFile(),
       await _genImageFile(),
       await _genImageFile(),
       await _genImageFile(),
     ],
+    orderItem: await _genOrderItem(),
     createdAt: new Date(),
   };
 }
