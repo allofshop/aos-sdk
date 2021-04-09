@@ -1252,7 +1252,7 @@ export async function genWishlist() {
   };
 }
 
-export async function genWriteableOrderItem() {
+export async function genWritableOrderItem() {
   return {
     data: {
       items: [

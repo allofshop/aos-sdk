@@ -1,3 +1,3 @@
-export * from './getReviewWriteableOrderItems';
+export * from './getReviewWritableOrderItems';
 export * from './updatePassword';
 export * from './updateUser';

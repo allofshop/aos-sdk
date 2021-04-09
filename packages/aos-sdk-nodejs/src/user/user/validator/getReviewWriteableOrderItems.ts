@@ -1,8 +1,8 @@
 import { ObjectValidator, StringValidator } from '~/base/validator';
 
-import { FindReviewWriteableOrderItemsDto } from '../type';
+import { FindReviewWritableOrderItemsDto } from '../type';
 
-export class FindReviewWriteableOrderItemsValidator {
+export class FindReviewWritableOrderItemsValidator {
   private objectValidator: ObjectValidator;
   private stringValidator: StringValidator;
 
@@ -11,7 +11,7 @@ export class FindReviewWriteableOrderItemsValidator {
     this.stringValidator = new StringValidator();
   }
 
-  public validate(query: FindReviewWriteableOrderItemsDto, location: string) {
+  public validate(query: FindReviewWritableOrderItemsDto, location: string) {
     this.objectValidator.validate(query, location);
 
     if (query.productName !== undefined) {

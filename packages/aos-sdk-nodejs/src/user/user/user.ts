@@ -1,15 +1,15 @@
 import * as lite from '@allofshop/aos-sdk-nodejs-lite';
 
-import { genUser, genWriteableOrderItem } from '~/_mock';
+import { genUser, genWritableOrderItem } from '~/_mock';
 import Config from '~/config';
 
 import {
-  FindReviewWriteableOrderItemsDto,
+  FindReviewWritableOrderItemsDto,
   UpdatePasswordDto,
   UpdateUserDto,
 } from './type';
 import {
-  FindReviewWriteableOrderItemsValidator,
+  FindReviewWritableOrderItemsValidator,
   UpdatePasswordValidator,
   UpdateUserValidator,
 } from './validator';
@@ -64,20 +64,20 @@ export async function updatePassword(body: UpdatePasswordDto) {
   );
 }
 
-export async function getReviewWriteableOrderItems(
-  query: FindReviewWriteableOrderItemsDto
+export async function getReviewWritableOrderItems(
+  query: FindReviewWritableOrderItemsDto
 ) {
-  const findReviewWriteableOrderItemsValidator: FindReviewWriteableOrderItemsValidator = new FindReviewWriteableOrderItemsValidator();
-  findReviewWriteableOrderItemsValidator.validate(query, 'query');
+  const findReviewWritableOrderItemsValidator: FindReviewWritableOrderItemsValidator = new FindReviewWritableOrderItemsValidator();
+  findReviewWritableOrderItemsValidator.validate(query, 'query');
 
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
-    return await genWriteableOrderItem();
+    return await genWritableOrderItem();
   }
 
   return await lite.request(
     'GET',
-    `users/me/orderItems/getReviewWriteableList`,
+    `users/me/orderItems/getReviewWritableList`,
     { content: 'json' },
     {
       query,
