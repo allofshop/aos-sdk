@@ -16,10 +16,17 @@ import {
 import { PayResponseErrorCallback, PayResponseSuccessCallback } from './types';
 
 const TARGET_ORIGIN = 'http://localhost:3000';
-const DEV = true;
+const DEV = false;
 
 class AosPaymentSdk {
-  public readonly commonParams: CommonParam[] = [];
+  public readonly commonParams: CommonParam[] = [
+    {
+      key: 'orderId',
+      dataType: 'string',
+      defaultValue: undefined,
+      required: true,
+    },
+  ];
   private orderId: string;
   private shopId: string;
   private accessToken: string;
