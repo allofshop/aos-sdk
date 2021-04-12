@@ -8,7 +8,11 @@
 		},
 		{
 			"path": "packages/aos-sdk-js-lite"
+		},
+		{
+			"path": "packages/aos-sdk-payment"
 		}
 	],
-	"settings": {}
+	"settings": {
+	}
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /**
  * @copyright Copyright © 2018-2019 Corretto, Inc. All rights reserved.
  */
