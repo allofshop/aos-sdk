@@ -90,7 +90,6 @@ class AosPaymentSdk {
               }
               return;
             }
-            console.log(this.payload);
             this.sendMessage({
               type: 'checkout',
               payload: this.payload as any,
