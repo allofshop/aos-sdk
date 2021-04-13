@@ -10,6 +10,8 @@ module.exports = {
     filename: 'aos-sdk-payment.js',
     path: path.resolve(__dirname, '.dist'),
     publicPath: '/',
+    library: 'aos-sdk-payment',
+    libraryTarget: 'umd',
   },
   devtool: 'source-map',
   resolve: {
