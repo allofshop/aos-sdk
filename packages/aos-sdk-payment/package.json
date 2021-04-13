@@ -1,6 +1,6 @@
 {
   "name": "@allofshop/aos-sdk-payment",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "allofshop payment sdk for webbrowser",
   "main": ".dist/aos-sdk-payment.js",
   "types": ".dist/src/index.d.ts",
