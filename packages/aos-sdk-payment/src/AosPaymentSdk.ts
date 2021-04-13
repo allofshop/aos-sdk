@@ -55,6 +55,10 @@ class AosPaymentSdk {
   }
 
   public init(options: InitOption) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     this.shopId = options.shopId;
     this.accessToken = options.accessToken;
     this.pgProvider = options.pgProvider;
@@ -118,6 +122,10 @@ class AosPaymentSdk {
   }
 
   private sendMessage(message: SendMessageParam) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     const iframeDom = window.document.getElementById(AOS_IFRAME_ID);
 
     if (!isHTMLIframeElement(iframeDom)) {
@@ -181,6 +189,9 @@ class AosPaymentSdk {
   }
 
   public pay(params: PayParameter) {
+    if (typeof window === 'undefined') {
+      return;
+    }
     const wrapperDom: HTMLElement | null = window.document.getElementById(
       WRAPPER_ID_NAME,
     );
