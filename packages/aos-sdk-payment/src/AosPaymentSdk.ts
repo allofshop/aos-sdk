@@ -15,7 +15,6 @@ import {
 } from './interfaces';
 import { PayResponseErrorCallback, PayResponseSuccessCallback } from './types';
 
-const TARGET_ORIGIN = 'http://192.168.0.19:3001';
 const DEV = true;
 
 class AosPaymentSdk {
@@ -31,6 +30,7 @@ class AosPaymentSdk {
   private shopId: string;
   private accessToken: string;
   private pgProvider: string;
+  private apiHost: string;
 
   private payload?: PayParameterPayload;
   private callbackSuccess?: PayResponseSuccessCallback;
@@ -42,16 +42,14 @@ class AosPaymentSdk {
     this.accessToken = '';
     this.pgProvider = '';
     this.payload = undefined;
+    this.apiHost = '';
     this.callbackSuccess = undefined;
     this.callbackError = undefined;
   }
 
   private pgWindowUrl() {
     if (DEV) {
-      console.log(
-        `http://192.168.0.19:3001/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}`,
-      );
-      return `http://192.168.0.19:3001/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}`;
+      return `${this.apiHost}/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}`;
     }
     return `https://payment-${this.shopId}.thebackpack.io/${this.orderId}`;
   }
@@ -61,6 +59,7 @@ class AosPaymentSdk {
     this.accessToken = options.accessToken;
     this.pgProvider = options.pgProvider;
     this.orderId = options.orderId;
+    this.apiHost = options.apiHost;
 
     window.document.body.innerHTML += `<div id="${WRAPPER_ID_NAME}"></div>`;
     window.addEventListener(
@@ -125,7 +124,7 @@ class AosPaymentSdk {
       return;
     }
 
-    iframeDom.contentWindow?.postMessage(message, TARGET_ORIGIN);
+    iframeDom.contentWindow?.postMessage(message, this.apiHost);
   }
 
   private validate(payload: PayParameterPayload) {

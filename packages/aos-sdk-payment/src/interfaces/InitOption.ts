@@ -7,4 +7,5 @@ export interface InitOption {
   orderId: string;
   accessToken: string;
   pgProvider: string;
+  apiHost: string;
 }
