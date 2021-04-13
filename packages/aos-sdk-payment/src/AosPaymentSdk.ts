@@ -15,8 +15,8 @@ import {
 } from './interfaces';
 import { PayResponseErrorCallback, PayResponseSuccessCallback } from './types';
 
-const TARGET_ORIGIN = 'http://localhost:3000';
-const DEV = false;
+const TARGET_ORIGIN = 'http://192.168.0.19:3001';
+const DEV = true;
 
 class AosPaymentSdk {
   public readonly commonParams: CommonParam[] = [
@@ -30,6 +30,7 @@ class AosPaymentSdk {
   private orderId: string;
   private shopId: string;
   private accessToken: string;
+  private pgProvider: string;
 
   private payload?: PayParameterPayload;
   private callbackSuccess?: PayResponseSuccessCallback;
@@ -39,6 +40,7 @@ class AosPaymentSdk {
     this.shopId = '';
     this.orderId = '';
     this.accessToken = '';
+    this.pgProvider = '';
     this.payload = undefined;
     this.callbackSuccess = undefined;
     this.callbackError = undefined;
@@ -46,7 +48,10 @@ class AosPaymentSdk {
 
   private pgWindowUrl() {
     if (DEV) {
-      return ``;
+      console.log(
+        `http://192.168.0.19:3001/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}`,
+      );
+      return `http://192.168.0.19:3001/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}`;
     }
     return `https://payment-${this.shopId}.thebackpack.io/${this.orderId}`;
   }
@@ -54,11 +59,18 @@ class AosPaymentSdk {
   public init(options: InitOption) {
     this.shopId = options.shopId;
     this.accessToken = options.accessToken;
+    this.pgProvider = options.pgProvider;
+    this.orderId = options.orderId;
 
     window.document.body.innerHTML += `<div id="${WRAPPER_ID_NAME}"></div>`;
     window.addEventListener(
       'message',
       (event: Event) => {
+        console.log(
+          'TCL ~ file: AosPaymentSdk.ts ~ line 69 ~ AosPaymentSdk ~ init ~ event',
+          event,
+        );
+
         if (!event.data.type) {
           return;
         }
@@ -75,9 +87,10 @@ class AosPaymentSdk {
               }
               return;
             }
+            console.log(this.payload);
             this.sendMessage({
-              type: 'init',
-              payload: {},
+              type: 'checkout',
+              payload: this.payload as any,
             });
             break;
           case 'billed':
@@ -105,23 +118,17 @@ class AosPaymentSdk {
     );
   }
 
-  public sendMessage(message: SendMessageParam, src?: Window) {
+  private sendMessage(message: SendMessageParam) {
     const iframeDom = window.document.getElementById(AOS_IFRAME_ID);
 
     if (!isHTMLIframeElement(iframeDom)) {
       return;
     }
 
-    const sender = src ? src : iframeDom.contentWindow;
-
-    if (!sender) {
-      return;
-    }
-
-    sender.postMessage(message, TARGET_ORIGIN);
+    iframeDom.contentWindow?.postMessage(message, TARGET_ORIGIN);
   }
 
-  public validate(payload: PayParameterPayload) {
+  private validate(payload: PayParameterPayload) {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.commonParams.length; i++) {
       const key = this.commonParams[i].key;
@@ -160,14 +167,14 @@ class AosPaymentSdk {
     return true;
   }
 
-  public validateParams(params: PayParameterPayload) {
+  private validateParams(params: PayParameterPayload) {
     if (isUndefined(params)) {
       return false;
     }
     return true;
   }
 
-  public validateRequireField(params: PayParameterPayload) {
+  private validateRequireField(params: PayParameterPayload) {
     if (isUndefined(params)) {
       return false;
     }
@@ -199,9 +206,7 @@ class AosPaymentSdk {
       return;
     }
 
-    const param = encodeURIComponent(JSON.stringify(this.payload));
-
-    wrapperDom.innerHTML += `<iframe src="${this.pgWindowUrl()}?param=${param}"
+    wrapperDom.innerHTML += `<iframe src="${this.pgWindowUrl()}"
       width="100%"
       height="100%"
       frameborder="0"

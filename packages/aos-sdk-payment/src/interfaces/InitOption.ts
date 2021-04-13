@@ -4,5 +4,7 @@
 
 export interface InitOption {
   shopId: string;
+  orderId: string;
   accessToken: string;
+  pgProvider: string;
 }
