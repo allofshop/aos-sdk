@@ -5,8 +5,7 @@
 import Client from './AosPaymentSdk';
 
 const AosPaymentSdk = new Client();
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-if ((window as any) !== undefined) {
+if (typeof window === 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).AosPaymentSdk = AosPaymentSdk;
 }
