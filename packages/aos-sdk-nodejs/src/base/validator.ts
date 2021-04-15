@@ -54,7 +54,6 @@ export class DateValidator {
 
 export class ObjectValidator {
   public validate(value: Record<string, unknown>, location: string) {
-    console.log('>>>>>>', typeof value);
     if (typeof value !== 'object') {
       throw new ValueShouldBeObject(location);
     }

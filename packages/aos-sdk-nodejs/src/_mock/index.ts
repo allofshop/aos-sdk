@@ -1053,11 +1053,9 @@ export async function genCartItem() {
   return {
     id: v4(),
     quantity: getRandomNumber(100),
-    product: {
-      id: v4(),
-      name: 'B카트내상품명B',
-      paymentPrice: getRandomNumber(100000),
-      featuredImages: [],
+    product: await _genProductDetail(),
+    stats: {
+      totalPrice: getRandomNumber(100000),
     },
   };
 }
