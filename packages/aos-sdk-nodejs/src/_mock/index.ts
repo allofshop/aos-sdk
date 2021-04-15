@@ -473,6 +473,7 @@ async function _genOrder() {
       priceBeforeDiscount: getRandomNumber(100000),
       priceBeforeTax: getRandomNumber(100000),
       taxPrice: getRandomNumber(100000),
+      paymentPrice: getRandomNumber(100000),
     },
   };
 }
@@ -549,6 +550,7 @@ export async function _genOrderListItem() {
         mileagePoint: getRandomNumber(100000),
       },
       mileagePoint: getRandomNumber(100000),
+      paymentPrice: getRandomNumber(100000),
       discountPrice: getRandomNumber(100000),
       couponPrice: getRandomNumber(100000),
       price: getRandomNumber(100000),
