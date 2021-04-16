@@ -13,6 +13,29 @@ import {
 } from '~/user/customerService/vo';
 import { OrderStatus } from '~/user/order/vo';
 
+export async function genShop() {
+  return {
+    data: {
+      id: v4(),
+      setting: {
+        paymentMethod: {
+          pgs: [],
+          wireTransfers: [
+            {
+              id: v4(),
+              bank: 'SHINHAN',
+              account: {
+                owner: '예금주',
+                number: '111-333-333333',
+              },
+            },
+          ],
+        },
+      },
+    },
+  };
+}
+
 async function _genImageFile() {
   return {
     original: {

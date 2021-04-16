@@ -9,6 +9,7 @@ import * as Core from './core';
 import * as Promotion from './promotion';
 import * as Review from './review';
 import * as Sales from './sales';
+import * as System from './system';
 import * as User from './user';
 
 export default {
@@ -20,6 +21,7 @@ export default {
   Promotion,
   Review,
   Sales,
+  System,
   User,
   setConfig: (config: ConfigInterface) => {
     Object.assign(Config, config);
