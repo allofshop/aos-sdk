@@ -133,11 +133,14 @@ export async function genCategoryList() {
   };
 }
 
-async function genCategoryListItem(exit?: boolean): Promise<any> {
+async function genCategoryListItem(
+  exit?: boolean,
+  name?: string
+): Promise<any> {
   if (exit) {
     return {
       id: v4(),
-      name: '카테고리 샘플',
+      name: name || '카테고리 샘플',
       children: [],
       parent: v4(),
     };
@@ -145,14 +148,14 @@ async function genCategoryListItem(exit?: boolean): Promise<any> {
 
   return {
     id: v4(),
-    name: '카테고리 샘플',
+    name: '의류',
     children: [
-      await genCategoryListItem(true),
-      await genCategoryListItem(true),
-      await genCategoryListItem(true),
-      await genCategoryListItem(true),
-      await genCategoryListItem(true),
-      await genCategoryListItem(true),
+      await genCategoryListItem(true, '바지'),
+      await genCategoryListItem(true, '티셔츠'),
+      await genCategoryListItem(true, '셔츠'),
+      await genCategoryListItem(true, '청바지'),
+      await genCategoryListItem(true, '자켓'),
+      await genCategoryListItem(true, '속옷'),
     ],
     parent: v4(),
   };
