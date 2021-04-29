@@ -381,7 +381,8 @@ export async function genProductOptionItemValue() {
 
 export async function genProductVariant() {
   return {
-    name: 'VRNT명',
+    id: v4(),
+    name: `옵션-${getRandomNumber(10000)}`,
     code: `rnt-${getRandomNumber(10)}`,
     raws: [],
     stockManagement: {
@@ -400,6 +401,7 @@ export async function genProductVariant() {
 
 export async function genProductOptionExtra() {
   return {
+    id: v4(),
     type: 'TEXT',
     name: '옵션 엑스트라',
     required: false,
