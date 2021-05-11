@@ -13,6 +13,30 @@ import {
 } from '~/user/customerService/vo';
 import { OrderStatus } from '~/user/order/vo';
 
+export async function genPaymentMethod() {
+  return {
+    data: {
+      card: {
+        type: 'PG-CARD',
+        id: v4(),
+        provider: 'SHINHAN',
+      },
+      vbank: {},
+      deposit: {},
+      wireTransfers: [
+        {
+          id: v4(),
+          bank: 'SHINHAN',
+          account: {
+            owner: '예금주',
+            number: '111-333-333333',
+          },
+        },
+      ],
+    },
+  };
+}
+
 export async function genShop() {
   return {
     data: {
