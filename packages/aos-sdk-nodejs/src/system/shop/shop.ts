@@ -9,5 +9,5 @@ export async function getCurrent() {
     return genShop();
   }
 
-  return await lite.request('GET', 'getCurrent', { content: 'json' }, {});
+  return await lite.request('GET', '', { content: 'json' }, {});
 }
