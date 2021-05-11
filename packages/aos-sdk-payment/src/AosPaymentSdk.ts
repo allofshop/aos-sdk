@@ -28,6 +28,7 @@ class AosPaymentSdk {
   ];
   private orderId: string;
   private shopId: string;
+  private accessToken: string;
   private pgProvider: string;
   private apiHost: string;
 
@@ -38,6 +39,7 @@ class AosPaymentSdk {
   constructor() {
     this.shopId = '';
     this.orderId = '';
+    this.accessToken = '';
     this.pgProvider = '';
     this.payload = undefined;
     this.apiHost = '';
@@ -47,7 +49,7 @@ class AosPaymentSdk {
 
   private pgWindowUrl() {
     if (DEV) {
-      return `${this.apiHost}/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}`;
+      return `${this.apiHost}/shops/${this.shopId}/orders/${this.orderId}?pgProvider=${this.pgProvider}&accessToken=${this.accessToken}`;
     }
     return `https://payment-${this.shopId}.thebackpack.io/${this.orderId}`;
   }
@@ -58,6 +60,7 @@ class AosPaymentSdk {
     }
 
     this.shopId = options.shopId;
+    this.accessToken = options.accessToken;
     this.pgProvider = options.pgProvider;
     this.orderId = options.orderId;
     this.apiHost = options.apiHost;
