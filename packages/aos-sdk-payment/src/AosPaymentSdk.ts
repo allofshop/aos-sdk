@@ -95,7 +95,7 @@ class AosPaymentSdk {
               payload: this.payload as any,
             });
             break;
-          case 'billed':
+          case 'successed':
             if (this.callbackSuccess) {
               this.callbackSuccess(payload);
             }
