@@ -31,6 +31,7 @@ class AosPaymentSdk {
   private accessToken: string;
   private pgProvider: string;
   private apiHost: string;
+  private mounted: boolean;
 
   private payload?: PayParameterPayload;
   private callbackSuccess?: PayResponseSuccessCallback;
@@ -43,6 +44,7 @@ class AosPaymentSdk {
     this.pgProvider = '';
     this.payload = undefined;
     this.apiHost = '';
+    this.mounted = false;
     this.callbackSuccess = undefined;
     this.callbackError = undefined;
   }
@@ -65,14 +67,20 @@ class AosPaymentSdk {
     this.orderId = options.orderId;
     this.apiHost = options.apiHost;
 
-    window.document.body.innerHTML += `<div id="${WRAPPER_ID_NAME}"></div>`;
+    const wrapperDom: HTMLElement | null = window.document.getElementById(
+      WRAPPER_ID_NAME,
+    );
+
+    if (!wrapperDom) {
+      window.document.body.innerHTML += `<div id="${WRAPPER_ID_NAME}"></div>`;
+    }
+
     window.addEventListener(
       'message',
       (event: Event) => {
         if (!event.data.type) {
           return;
         }
-
         const payload = event.data.payload;
         switch (event.data.type) {
           case 'onloaded':
