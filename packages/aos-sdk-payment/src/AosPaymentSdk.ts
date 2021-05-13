@@ -69,11 +69,6 @@ class AosPaymentSdk {
     window.addEventListener(
       'message',
       (event: Event) => {
-        console.log(
-          'TCL ~ file: AosPaymentSdk.ts ~ line 69 ~ AosPaymentSdk ~ init ~ event',
-          event,
-        );
-
         if (!event.data.type) {
           return;
         }
@@ -221,7 +216,7 @@ class AosPaymentSdk {
       frameborder="0"
       id="${AOS_IFRAME_ID}"
       class="${AOS_IFRAME_ID}"
-      style="position: absolute;
+      style="position: fixed;
       left: 0px;
       right: 0px;
       top: 0px;

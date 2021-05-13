@@ -8,48 +8,24 @@
   </head>
   <body>
     <script>
-      AosPaymentSdk.init({
-        shopId: '5fbb38e6c9515b0eef4c5b78',
-        orderId: '602e24a4cdd9b0310e9996b2',
-        accessToken: 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ijk1OTA2MmUzLWVjZDktNDMyNy1hMGI0LTc4MTgyNjQyZjg2ZSJ9.eyJpYXQiOjE2MTM2MzY3NDksImF6cCI6IjVmYmIzOGU2Yzk1MTViMGVlZjRjNWI3OCIsImF6cGFjciI6IjAiLCJuYmYiOjE2MTM2MzY3NDksImV4cCI6MTYxMzcyMzE0OSwiYXVkIjoiNWZiYjM4ZTZjOTUxNWIwZWVmNGM1Yjc4IiwiaXNzIjoiaHR0cHM6Ly9hcGkuYWxsb2Yuc2hvcCIsInN1YiI6IjYwMjEwN2IwMzhmNWM2OGE0MzA2YTRlNiIsImp0aSI6IjYwMmUyNDhkY2RkOWIwMzEwZTk5OTZhMSJ9.p7zc4nNSniCDLBqgASgxD5wbpZJBHPxATCN33yMw0Er96X5KcKiD8Na3H7FXXbY7cLAvcnNIuZ0hrUK7jRTLNQ',
-        pgProvider: 'nice-payments',
-        apiHost: 'http://192.168.0.19:8080'
-      });
-      AosPaymentSdk.pay({
-        payload: {
-          orderId: '602e24a4cdd9b0310e9996b2',
-          productName: 'testProduct',
-          orderer: {
-            name: '주문자이름',
-            homePhone: '집전화',
-            mobilePhone: '핸드폰',
-            email: 'help@corretto.io',
+      $(document).ready(function(e) {
+        AosPaymentSdk.init({
+          shopId: 'b8319c74-f998-4e6d-ac4d-e059dc65d0e6',
+          orderId: '2d31fd27-4e99-4dd5-9679-612a8bd05534',
+          accessToken: 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjA4MDE1ODMsImF6cCI6ImI4MzE5Yzc0LWY5OTgtNGU2ZC1hYzRkLWUwNTlkYzY1ZDBlNiIsImF6cGFjciI6IjAiLCJuYmYiOjE2MjA4MDE1ODMsImV4cCI6MTYyMDg4Nzk4MywiYXVkIjoiYjgzMTljNzQtZjk5OC00ZTZkLWFjNGQtZTA1OWRjNjVkMGU2IiwiaXNzIjoiaHR0cHM6Ly9hcGkuYWxsb2Yuc2hvcCIsInN1YiI6ImE3ODg4ZjZmLThlZmQtNGI2Zi05ODk5LWY1YmMyYWNlZjU4ZSIsImp0aSI6ImJhY2Y1OGU2LWI0MDAtNGE1Mi1hMmI3LThkODRlYWE0ZWM4YyJ9.DxKH4vv3jAVyRHV1vedqTTqb7wB7s3i_3RWWg1eT1oHJf3tvcdF2GOCWovYXUhokExERkfuppkbLdoZ9JzyvRQ',
+          pgProvider: 'nice-payments',
+          apiHost: 'http://192.168.0.2:3003'
+        });
+        AosPaymentSdk.pay({
+          payload: {"orderId":"2d31fd27-4e99-4dd5-9679-612a8bd05534","productName":"2d31fd27-4e99-4dd5-9679-612a8bd05534","orderer":{"name":"-","mobilePhone":"-","email":"-"},"recipient":{"name":"배송지","mobilePhone":"01033333333"},"couponIds":[],"usingMileage":0,"address":{"zipCode":"06038","address1":"서울 강남구 도산대로 지하 102 (신사동, 신사역)","address2":"상세주소"},"payment":{"type":"PG-CARD","pgId":"7e7be74c-688d-4bb0-86bb-a60fa74c3ef8"}},
+          onSuccess: function(res) {
+            alert('결제가 완료되었습니다.');
           },
-          recipient:  {
-            name: '받는사람',
-            homePhone: '받는곳전화',
-            mobilePhone: '받는곳핸드폰',
+          onError: function(err) {
+            console.log(err);
           },
-          couponIds: [],
-          usingMileage: 0,
-          address:  {
-            zipCode: '우편번호',
-            basic: '기본주소',
-            locality: '시/도',
-            region: '지역'
-          },
-          payment: {
-            type: 'PG-CARD',
-            pgId: '602e251f4fd35e555431946e',
-          },
-        },
-        onSuccess: function(res) {
-          alert('결제가 완료되었습니다.');
-        },
-        onError: function(err) {
-          console.log(err);
-        },
-      });
+        });
+      })
     </script>
   </body>
 </html>
