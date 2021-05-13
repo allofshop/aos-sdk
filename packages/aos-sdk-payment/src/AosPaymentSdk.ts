@@ -100,6 +100,10 @@ class AosPaymentSdk {
             alert('[client]' + err.message);
             break;
           case 'canceled':
+            const wrapperEl = window.document.getElementById(WRAPPER_ID_NAME);
+            if (wrapperEl) {
+              wrapperEl.innerHTML = '';
+            }
             if (this.callbackError) {
               this.callbackError({
                 message: payload.errorMessage,
