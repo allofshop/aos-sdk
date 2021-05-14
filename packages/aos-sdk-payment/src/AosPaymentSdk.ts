@@ -71,12 +71,15 @@ class AosPaymentSdk {
       this.wrapperId = options.wrapperId;
     }
 
-    const wrapperDom: HTMLElement | null = window.document.getElementById(
+    const foundWrapperDom: HTMLElement | null = window.document.getElementById(
       this.wrapperId,
     );
 
-    if (!wrapperDom) {
+    if (!foundWrapperDom) {
       window.document.body.innerHTML += `<div id="${this.wrapperId}"></div>`;
+    } else {
+      foundWrapperDom.style.cssText =
+        'position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%';
     }
 
     window.addEventListener(
