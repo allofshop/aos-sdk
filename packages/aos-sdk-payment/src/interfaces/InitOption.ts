@@ -8,4 +8,5 @@ export interface InitOption {
   accessToken: string;
   pgProvider: string;
   apiHost: string;
+  wrapperId?: string;
 }

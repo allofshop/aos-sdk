@@ -31,7 +31,7 @@ class AosPaymentSdk {
   private accessToken: string;
   private pgProvider: string;
   private apiHost: string;
-  private mounted: boolean;
+  private wrapperId: string;
 
   private payload?: PayParameterPayload;
   private callbackSuccess?: PayResponseSuccessCallback;
@@ -44,7 +44,7 @@ class AosPaymentSdk {
     this.pgProvider = '';
     this.payload = undefined;
     this.apiHost = '';
-    this.mounted = false;
+    this.wrapperId = WRAPPER_ID_NAME;
     this.callbackSuccess = undefined;
     this.callbackError = undefined;
   }
@@ -67,12 +67,16 @@ class AosPaymentSdk {
     this.orderId = options.orderId;
     this.apiHost = options.apiHost;
 
+    if (options.wrapperId) {
+      this.wrapperId = options.wrapperId;
+    }
+
     const wrapperDom: HTMLElement | null = window.document.getElementById(
-      WRAPPER_ID_NAME,
+      this.wrapperId,
     );
 
     if (!wrapperDom) {
-      window.document.body.innerHTML += `<div id="${WRAPPER_ID_NAME}"></div>`;
+      window.document.body.innerHTML += `<div id="${this.wrapperId}"></div>`;
     }
 
     window.addEventListener(
@@ -108,7 +112,7 @@ class AosPaymentSdk {
             alert('[client]' + err.message);
             break;
           case 'canceled':
-            const wrapperEl = window.document.getElementById(WRAPPER_ID_NAME);
+            const wrapperEl = window.document.getElementById(this.wrapperId);
             if (wrapperEl) {
               wrapperEl.innerHTML = '';
             }
@@ -199,7 +203,7 @@ class AosPaymentSdk {
       return;
     }
     const wrapperDom: HTMLElement | null = window.document.getElementById(
-      WRAPPER_ID_NAME,
+      this.wrapperId,
     );
 
     if (!wrapperDom) {
