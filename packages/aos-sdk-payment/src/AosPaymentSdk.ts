@@ -79,7 +79,7 @@ class AosPaymentSdk {
       window.document.body.innerHTML += `<div id="${this.wrapperId}"></div>`;
     } else {
       foundWrapperDom.style.cssText =
-        'position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%';
+        'position: fixed; z-index: 99999; top: 0; left: 0;';
     }
 
     window.addEventListener(
