@@ -11,6 +11,7 @@ const config: ConfigInterface = {
   secret: '',
   shopId: '',
   version: 1,
+  authorization: undefined,
 };
 
 export default config;
