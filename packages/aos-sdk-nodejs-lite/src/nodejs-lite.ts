@@ -104,6 +104,7 @@ export async function request<ResponseType>(
 
   if (globalOption.authorization) {
     headers.Authorization = `Bearer ${globalOption.authorization}`;
+    console.log('ACCESSTOKEN: ', headers.Authorization);
   }
 
   const response: AxiosResponse<AllOfShopResponse<ResponseType>> = await axios({
