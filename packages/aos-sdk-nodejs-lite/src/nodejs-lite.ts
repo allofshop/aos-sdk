@@ -18,6 +18,7 @@ interface Headers {
 type BodyDict = {
   [key: string]: string | number | boolean | Date | BodyDict | any[];
 };
+
 type QueryDict = {
   [key: string]: string | number | boolean | Date | QueryDict | any[];
 };
@@ -45,6 +46,8 @@ export function initialize(options: InitializeOptions) {
   }
 
   globalOption = Object.assign(globalOption || {}, DEFAULT_OPTION, options);
+
+  console.log('AosSDK Initialized!', globalOption);
 }
 
 /**
