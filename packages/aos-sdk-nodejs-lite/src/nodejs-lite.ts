@@ -33,6 +33,10 @@ interface RequestOption {
   content: ContentType;
 }
 
+const DEFAULT_OPTION: Partial<InitializeOptions> = {
+  version: 1,
+};
+
 let globalOption: InitializeOptions;
 
 export function initialize(options: InitializeOptions) {
@@ -40,14 +44,7 @@ export function initialize(options: InitializeOptions) {
     throw new Error('');
   }
 
-  globalOption.apiKey = options.apiKey;
-  globalOption.host = options.host;
-  globalOption.secret = options.secret;
-  globalOption.shopId = options.shopId;
-  globalOption.version = options.version;
-  if (options.authorization) {
-    globalOption.authorization = options.authorization;
-  }
+  globalOption = Object.assign(globalOption || {}, DEFAULT_OPTION, options);
 }
 
 /**
