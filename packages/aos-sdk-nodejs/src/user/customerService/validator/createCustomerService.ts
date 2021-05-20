@@ -11,8 +11,6 @@ import { CollectingAddress } from '../type/createCustomerService/_collectingAddr
 import { Delivery } from '../type/createCustomerService/_delivery';
 import { DeliveryAddress } from '../type/createCustomerService/_deliveryAddress';
 import { Destination } from '../type/createCustomerService/_destination';
-import { ExtraCharge } from '../type/createCustomerService/_extraCharge';
-import { Refund } from '../type/createCustomerService/_refund';
 import { Source } from '../type/createCustomerService/_source';
 import {
   CustomerServicePaymentWayValidator,
@@ -169,82 +167,6 @@ class DeliveryAddressValidator {
   }
 }
 
-class RefundValidator {
-  private objectValidator: ObjectValidator;
-  private numberValidator: NumberValidator;
-
-  constructor() {
-    this.objectValidator = new ObjectValidator();
-    this.numberValidator = new NumberValidator();
-  }
-
-  public validate(refund: Refund, location: string) {
-    this.objectValidator.validate(refund, location);
-    this.numberValidator.validate(
-      refund.productPrice,
-      `${location}.productPrice`
-    );
-    this.numberValidator.validate(
-      refund.deliveryPrice,
-      `${location}.deliveryPrice`
-    );
-    this.numberValidator.validate(
-      refund.usingMileagePoint,
-      `${location}.usingMileagePoint`
-    );
-    this.numberValidator.validate(
-      refund.discountPrice,
-      `${location}.discountPrice`
-    );
-    this.numberValidator.validate(
-      refund.couponPrice,
-      `${location}.couponPrice`
-    );
-    this.numberValidator.validate(
-      refund.mileagePoint,
-      `${location}.mileagePoint`
-    );
-  }
-}
-
-class ExtraChargeValidator {
-  private objectValidator: ObjectValidator;
-  private numberValidator: NumberValidator;
-
-  constructor() {
-    this.objectValidator = new ObjectValidator();
-    this.numberValidator = new NumberValidator();
-  }
-
-  public validate(extraCharge: ExtraCharge, location: string) {
-    this.objectValidator.validate(extraCharge, location);
-    this.numberValidator.validate(
-      extraCharge.productPrice,
-      `${location}.productPrice`
-    );
-    this.numberValidator.validate(
-      extraCharge.deliveryPrice,
-      `${location}.deliveryPrice`
-    );
-    this.numberValidator.validate(
-      extraCharge.usingMileagePoint,
-      `${location}.usingMileagePoint`
-    );
-    this.numberValidator.validate(
-      extraCharge.discountPrice,
-      `${location}.discountPrice`
-    );
-    this.numberValidator.validate(
-      extraCharge.couponPrice,
-      `${location}.couponPrice`
-    );
-    this.numberValidator.validate(
-      extraCharge.mileagePoint,
-      `${location}.mileagePoint`
-    );
-  }
-}
-
 export class CreateCustomerServiceValidator {
   private objectValidator: ObjectValidator;
   private stringValidator: StringValidator;
@@ -254,8 +176,6 @@ export class CreateCustomerServiceValidator {
   private customerServicePaymentWayValidator: CustomerServicePaymentWayValidator;
   private collectingValidator: CollectinValidator;
   private deliveryValidator: DeliveryValidator;
-  private refundValidator: RefundValidator;
-  private extraChargeValidator: ExtraChargeValidator;
 
   constructor() {
     this.objectValidator = new ObjectValidator();
@@ -266,8 +186,6 @@ export class CreateCustomerServiceValidator {
     this.customerServicePaymentWayValidator = new CustomerServicePaymentWayValidator();
     this.collectingValidator = new CollectinValidator();
     this.deliveryValidator = new DeliveryValidator();
-    this.refundValidator = new RefundValidator();
-    this.extraChargeValidator = new ExtraChargeValidator();
   }
 
   public validate(body: CreateCustomerServiceDto, location: string) {
@@ -279,7 +197,6 @@ export class CreateCustomerServiceValidator {
       body.destinations,
       `${location}.destinations`
     );
-    this.refundValidator.validate(body.refund, `${location}.refund`);
 
     if (body.reason !== undefined) {
       this.stringValidator.validate(body.reason, `${location}.reason`);
@@ -308,13 +225,6 @@ export class CreateCustomerServiceValidator {
 
     if (body.delivery !== undefined) {
       this.deliveryValidator.validate(body.delivery, `${location}.delivery`);
-    }
-
-    if (body.extraCharge !== undefined) {
-      this.extraChargeValidator.validate(
-        body.extraCharge,
-        `${location}.extraCharge`
-      );
     }
   }
 }
