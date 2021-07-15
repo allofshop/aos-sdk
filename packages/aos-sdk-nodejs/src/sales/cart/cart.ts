@@ -138,7 +138,7 @@ export async function deleteCartItem(cartId: string, cartItemId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/${cartId}/items/${cartItemId}`);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -152,7 +152,7 @@ export async function deleteDefaultCartItem(cartItemId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/default/items/${cartItemId}`);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -168,7 +168,7 @@ export async function deleteCartItems(cartId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/${cartId}/items`);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -179,7 +179,7 @@ export async function deleteDefaultCartItems() {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/default/items`);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -193,7 +193,7 @@ export async function deleteCart(cartId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /carts/${cartId}`);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 

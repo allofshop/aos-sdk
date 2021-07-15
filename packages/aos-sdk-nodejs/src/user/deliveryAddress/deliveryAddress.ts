@@ -86,7 +86,7 @@ export async function deleteUserDeliveryAddress(deliveryAddressId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 

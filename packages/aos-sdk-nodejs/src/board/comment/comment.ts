@@ -76,7 +76,7 @@ export async function deleteComment(
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 

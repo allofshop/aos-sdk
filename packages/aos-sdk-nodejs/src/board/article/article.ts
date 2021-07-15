@@ -70,7 +70,7 @@ export async function deleteArticle(articleId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -118,7 +118,7 @@ export async function cancelVoteArticle(articleId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 

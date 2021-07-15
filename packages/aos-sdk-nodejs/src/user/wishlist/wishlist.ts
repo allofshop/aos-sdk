@@ -167,7 +167,7 @@ export async function deleteUserWishlist(wishlistId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -185,7 +185,7 @@ export async function deleteUserWishlistProduct(
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -200,7 +200,7 @@ export async function deleteUserDefaultWishlist() {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 
@@ -216,7 +216,7 @@ export async function deleteUserDefaultWishlistProduct(productId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 

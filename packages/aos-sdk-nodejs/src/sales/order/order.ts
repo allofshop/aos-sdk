@@ -98,7 +98,7 @@ export async function deleteOrderItem(orderId: string, orderItemId: string) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
 

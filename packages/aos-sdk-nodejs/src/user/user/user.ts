@@ -39,7 +39,7 @@ export async function deleteUser() {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      deleted: true,
+      data: { deleted: true },
     };
   }
   return await lite.request('DELETE', `users/me`);
