@@ -52,7 +52,7 @@ export async function updatePassword(body: UpdatePasswordDto) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      success: true,
+      data: { success: true },
     };
   }
 

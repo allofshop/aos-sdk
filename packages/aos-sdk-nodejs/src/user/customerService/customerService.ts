@@ -24,7 +24,7 @@ export async function createUserCustomerService(
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: `);
     return {
-      success: true,
+      data: { success: true },
     };
   }
 

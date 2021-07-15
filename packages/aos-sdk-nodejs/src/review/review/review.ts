@@ -19,7 +19,7 @@ export async function createReview(body: CreateDto) {
   if (Config.mode === 'DEVELOPMENT') {
     console.log(`[DEVELOPMENT]: /reviews`);
     return {
-      success: true,
+      data: { success: true },
     };
   }
 
