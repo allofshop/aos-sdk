@@ -497,25 +497,41 @@ export async function genReviewList() {
 
 async function _genOrder() {
   return {
+    id: v4(),
+    createdAt: new Date(),
+    items: [
+      await _genOrderItem(),
+      await _genOrderItem(),
+      await _genOrderItem(),
+    ],
     status: OrderStatus.ORDER_PROCESSING,
     type: 'ORDER',
     code: v4(),
-    id: v4(),
+    orderer: {
+      name: '주문자 이름',
+      subPhoneNumber: '02-333-3333',
+      mainPhoneNumber: '010-3333-3333',
+      email: 'email@email.com',
+      user: {
+        id: v4(),
+        name: 'name',
+      },
+    },
+    payments: [],
+    deliveries: [],
+    coupons: [],
+    usingMileage: 0,
     availableCoupons: [],
     recipient: {
       name: '정지승',
-      mainPhoneNumber: '01030801376',
+      mainPhoneNumber: '010-3333-3333',
+      subPhoneNumber: '02-3333-3333',
       address: {
         zipCode: '03455',
         address1: '서울특별시 은평구 응알모 261',
         address2: '3층',
       },
     },
-    items: [
-      await _genOrderItem(),
-      await _genOrderItem(),
-      await _genOrderItem(),
-    ],
     stats: {
       product: {
         price: getRandomNumber(100000),
@@ -526,6 +542,17 @@ async function _genOrder() {
         couponPrice: getRandomNumber(100000),
         mileagePoint: getRandomNumber(100000),
       },
+      delivery: {
+        price: getRandomNumber(100000),
+        priceBeforeTax: getRandomNumber(100000),
+        taxPrice: getRandomNumber(100000),
+        priceBeforeDiscount: getRandomNumber(100000),
+        discountPrice: getRandomNumber(100000),
+        couponPrice: getRandomNumber(100000),
+        mileagePoint: getRandomNumber(100000),
+        areaPrice: getRandomNumber(100000),
+      },
+      paymentPrice: getRandomNumber(100000),
       mileagePoint: getRandomNumber(100000),
       discountPrice: getRandomNumber(100000),
       couponPrice: getRandomNumber(100000),
@@ -533,8 +560,8 @@ async function _genOrder() {
       priceBeforeDiscount: getRandomNumber(100000),
       priceBeforeTax: getRandomNumber(100000),
       taxPrice: getRandomNumber(100000),
-      paymentPrice: getRandomNumber(100000),
     },
+    memoForDelivery: '안전 배송 부탁',
   };
 }
 
@@ -1144,6 +1171,9 @@ async function _genShowcase(slug?: string) {
   return {
     id: v4(),
     name: '행복할인',
+    createdAt: new Date(),
+    description: '행복할인 설명',
+    displaable: true,
     slug: slug || 'slug',
     products: [
       await genProductItem(),
@@ -1185,10 +1215,19 @@ export async function genUser() {
   return {
     data: {
       id: 'asdf',
+      nickname: 'nickname',
+      birthdate: new Date(),
+      email: {
+        address: 'email@email.email',
+      },
+      gender: 'MALE',
       name: {
         first: 'first',
         last: 'last',
         middle: 'middle',
+      },
+      phone: {
+        nmber: '010-3333-3333',
       },
     },
   };
@@ -1300,7 +1339,9 @@ export async function genReputation() {
 export async function genWishlist() {
   return {
     data: {
+      id: v4(),
       name: 'wish',
+      description: 'default wish',
       isDefault: true,
       products: [
         await _genProductDetail(),
