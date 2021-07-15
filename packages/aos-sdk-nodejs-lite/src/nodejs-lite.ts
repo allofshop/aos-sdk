@@ -79,6 +79,7 @@ export async function request<ResponseType>(
     if (typeof data !== 'object') {
       throw new Error('');
     }
+
     if (data.query !== undefined) {
       realPath += '?';
       for (const key in data.query) {
