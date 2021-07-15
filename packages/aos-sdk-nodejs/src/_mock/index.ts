@@ -3,7 +3,7 @@
  */
 
 import { sign } from 'jsonwebtoken';
-import { v4 } from 'uuid';
+import { stringify, v4 } from 'uuid';
 
 import { OrderItemStatus } from '~/sales/order/vo';
 import {
@@ -80,11 +80,20 @@ async function _genImageFile() {
 function _genArticleData() {
   return {
     id: v4(),
-    author: {
-      displayName: '작성자',
+    createdAt: new Date(),
+    board: {
+      name: 'mockBoard',
+      categories: [],
+      order: 1,
     },
     title: '타이틀',
     content: '내용',
+    author: {
+      displayName: '작성자',
+      ip: '192.168.0.1',
+    },
+    isSecret: false,
+    viewCount: getRandomNumber(1000),
     comments: [
       {
         author: {
@@ -93,7 +102,6 @@ function _genArticleData() {
         content: '답변 또는 코멘트',
       },
     ],
-    createdAt: new Date(),
   };
 }
 
