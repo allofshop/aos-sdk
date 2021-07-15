@@ -3,7 +3,7 @@
  */
 
 import { sign } from 'jsonwebtoken';
-import { stringify, v4 } from 'uuid';
+import { v4 } from 'uuid';
 
 import { OrderItemStatus } from '~/sales/order/vo';
 import {
