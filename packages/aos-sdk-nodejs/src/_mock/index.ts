@@ -19,14 +19,15 @@ export async function genPaymentMethod() {
       card: {
         type: 'PG-CARD',
         id: v4(),
-        provider: 'SHINHAN',
+        provider: 'NICE-PAYMENTS',
       },
-      vbank: {},
-      deposit: {},
       wireTransfers: [
         {
           id: v4(),
-          bank: 'SHINHAN',
+          bank: {
+            id: 'SHINHAN',
+            name: 'SHINHAN',
+          },
           account: {
             owner: '예금주',
             number: '111-333-333333',
